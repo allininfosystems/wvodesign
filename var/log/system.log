@@ -1,0 +1,4 @@
+[2018-01-03 12:42:27] main.INFO: Broken reference: the 'currency' tries to reorder itself towards 'store_language', but their parents are different: 'header.panel' and 'porto_header' respectively. [] []
+[2018-01-03 12:42:27] main.INFO: Broken reference: the 'catalog.compare.link' tries to reorder itself towards 'top.links', but their parents are different: 'header.links' and 'header.panel' respectively. [] []
+[2018-01-03 12:42:27] main.INFO: Broken reference: the 'skip_gallery_before' tries to reorder itself towards 'product.info.media.image', but their parents are different: 'skip_gallery_before.wrapper' and 'product.info.media' respectively. [] []
+[2018-01-03 12:42:27] main.INFO: Broken reference: the 'skip_gallery_after' tries to reorder itself towards 'product.info.media.image', but their parents are different: 'skip_gallery_after.wrapper' and 'product.info.media' respectively. [] []

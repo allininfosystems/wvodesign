@@ -1,0 +1,1 @@
+[2018-01-03 12:41:38] main.DEBUG: cache_invalidate:  {"method":"GET","url":"http://localhost/wvodesign/solid-basket-centrifuge-25kg.html","invalidateInfo":{"tags":["interception","CONFIG"],"mode":"matchingTag"}} []

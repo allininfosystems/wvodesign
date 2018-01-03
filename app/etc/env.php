@@ -20,11 +20,11 @@ return array (
       'default' => 
       array (
         'host' => 'localhost',
-        'dbname' => 'wvodesig',
-        'username' => 'wvodesig',
-        'password' => 'tr2n6Qtbq9RmdRUC',
+        'dbname' => 'wvodesign',
+        'username' => 'root',
+        'password' => '',
         'active' => '1',
-      ),
+      ), 
     ),
   ),
   'resource' => 

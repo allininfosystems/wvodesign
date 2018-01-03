@@ -27,8 +27,8 @@
                        />
             </div>
             <div class="qty-changer">
-                <a href="javascript:void(0)" class="qty-inc"><i class="porto-icon-up-dir"></i></a>
-                <a href="javascript:void(0)" class="qty-dec"><i class="porto-icon-down-dir"></i></a>
+                <a field='qty' class="qtyplus" href="javascript:void(0)" class="qty-inc"><i class="porto-icon-up-dir"></i></a>
+                <a field='qty' class="qtyminus" href="javascript:void(0)" class="qty-dec"><i class="porto-icon-down-dir"></i></a>
             </div>
         </div>
         <?php endif; ?>
@@ -79,3 +79,49 @@
     });
 </script>
 <?php endif; ?>
+
+<script type="text/javascript">
+        //&lt;![CDATA[
+        require(['jquery'], function ($) {
+            setTimeout(function () {
+                // This button will increment the value
+                jQuery('.qtyplus').click(function (e) {
+                    // Stop acting like a button
+                    e.preventDefault();
+                    // Get the field name
+                    fieldName = jQuery(this).attr('field');
+                    // Get its current value
+                    var currentVal = parseInt(jQuery('input[name=' + fieldName + ']').val());
+                    // If is not undefined
+                    if (!isNaN(currentVal)) {
+                        // Increment
+                        jQuery('input[name=' + fieldName + ']').val(currentVal + 1);
+                    } else {
+                        // Otherwise put a 0 there
+                        jQuery('input[name=' + fieldName + ']').val(0);
+                    }
+                });
+                // This button will decrement the value till 0
+                jQuery(".qtyminus").click(function (e) {
+                    // Stop acting like a button
+                    e.preventDefault();
+                    // Get the field name
+                    fieldName = jQuery(this).attr('field');
+                    // Get its current value
+                    var currentVal = parseInt(jQuery('input[name=' + fieldName + ']').val());
+                    // If it isn't undefined or its greater than 0
+                    if (!isNaN(currentVal) && currentVal > 0) {
+                        // Decrement one
+                        jQuery('input[name=' + fieldName + ']').val(currentVal - 1);
+                    } else {
+                        // Otherwise put a 0 there
+                        jQuery('input[name=' + fieldName + ']').val(0);
+                    }
+                });
+            }, 100);
+        });
+        //]]&gt;
+    </script>
+	
+	
+	
