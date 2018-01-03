@@ -88,22 +88,27 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                     <span><?php /* @escapeNotVerified */ echo __('Qty') ?></span>
                 </label>
                 <div class="control qty">
-                    <input id="cart-<?php /* @escapeNotVerified */ echo $_item->getId() ?>-qty"
-                           name="cart[<?php /* @escapeNotVerified */ echo $_item->getId() ?>][qty]"
-                           data-cart-item-id="<?php /* @escapeNotVerified */ echo $_item->getSku() ?>"
-                           value="<?php /* @escapeNotVerified */ echo $block->getQty() ?>"
-                           type="number"
-                           size="4"
-                           title="<?php echo $block->escapeHtml(__('Qty')); ?>"
-                           class="input-text qty"
-                           maxlength="12"
-                           data-validate="{required:true,'validate-greater-than-zero':true}"
-                           data-role="cart-item-qty"/>
-                </div>
-                <div class="qty-changer">
-                    <a href="javascript:void(0)" class="qty-inc"><i class="porto-icon-up-dir"></i></a>
-                    <a href="javascript:void(0)" class="qty-dec"><i class="porto-icon-down-dir"></i></a>
-                </div>
+						<input id="cart-<?php /* @escapeNotVerified */ echo $_item->getId() ?>-qty"
+						   name="cart[<?php /* @escapeNotVerified */ echo $_item->getId() ?>][qty]"
+						   data-cart-item-id="<?php /* @escapeNotVerified */ echo $_item->getSku() ?>"
+						   value="<?php /* @escapeNotVerified */ echo $block->getQty() ?>"
+						   type="number"
+						   size="4"
+						   title="<?php echo $block->escapeHtml(__('Qty')); ?>"
+						   class="input-text qty"
+						   maxlength="12"
+						   data-validate="{required:true,'validate-greater-than-zero':true}"
+						   data-role="cart-item-qty"/>
+						   <!-- more and less button 
+						   <div class="more">+</div>
+						   <div class="less">-</div>-->						   
+						    <a class="more" href="javascript:void(0)" class="qty-inc"><i class="porto-icon-up-dir"></i></a>
+							<a class="less" href="javascript:void(0)" class="qty-dec"><i class="porto-icon-down-dir"></i></a>
+				</div>
+                <?php /* <div class="qty-changer">
+                    <a class="more" href="javascript:void(0)" class="qty-inc"><i class="porto-icon-up-dir"></i></a>
+                    <a class="less" href="javascript:void(0)" class="qty-dec"><i class="porto-icon-down-dir"></i></a>
+                </div> */ ?>
             </div>
         </td>
 
