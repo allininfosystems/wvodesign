@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="patch-add_interwiki.sql" server="wvodesigns.com" local="131557540415393082" remote="131251284000000000" Dst="1" />
+<file name="patch-category.sql" server="wvodesigns.com" local="131557540416153216" remote="131251284000000000" Dst="1" />
+<file name="patch-categorylinks-better-collation.sql" server="wvodesigns.com" local="131557540420085057" remote="131251284000000000" Dst="1" />
+<file name="patch-change_tag.sql" server="wvodesigns.com" local="131557540422125333" remote="131251284000000000" Dst="1" />
+<file name="patch-iwlinks.sql" server="wvodesigns.com" local="131557540422785359" remote="131251284000000000" Dst="1" />
+<file name="patch-l10n_cache.sql" server="wvodesigns.com" local="131557540427462883" remote="131251284000000000" Dst="1" />
+<file name="patch-kill-iwl_prefix.sql" server="wvodesigns.com" local="131557540428848241" remote="131251284000000000" Dst="1" />
+<file name="patch-log_search.sql" server="wvodesigns.com" local="131557540428933117" remote="131251284000000000" Dst="1" />
+<file name="patch-module_deps.sql" server="wvodesigns.com" local="131557540434199453" remote="131251284000000000" Dst="1" />
+<file name="patch-msg_resource.sql" server="wvodesigns.com" local="131557540435560255" remote="131251284000000000" Dst="1" />
+<file name="patch-msg_resource_links.sql" server="wvodesigns.com" local="131557540435629589" remote="131251284000000000" Dst="1" />
+<file name="patch-page.sql" server="wvodesigns.com" local="131557540437806886" remote="131251284000000000" Dst="1" />
+<file name="patch-page_deleted.sql" server="wvodesigns.com" local="131557540441124449" remote="131251284000000000" Dst="1" />
+<file name="patch-page_props.sql" server="wvodesigns.com" local="131557540443764067" remote="131251284000000000" Dst="1" />
+<file name="patch-page_restrictions.sql" server="wvodesigns.com" local="131557540443844132" remote="131251284000000000" Dst="1" />
+<file name="patch-profiling.sql" server="wvodesigns.com" local="131557540445704747" remote="131251284000000000" Dst="1" />
+<file name="patch-protected_titles.sql" server="wvodesigns.com" local="131557540450537758" remote="131251284000000000" Dst="1" />
+<file name="patch-querycachetwo.sql" server="wvodesigns.com" local="131557540451868332" remote="131251284000000000" Dst="1" />
+<file name="patch-rc_cur_id-not-null.sql" server="wvodesigns.com" local="131557540451948347" remote="131251284000000000" Dst="1" />
+<file name="patch-redirect.sql" server="wvodesigns.com" local="131557540453982482" remote="131251284000000000" Dst="1" />
+<file name="patch-remove-archive2.sql" server="wvodesigns.com" local="131557540457221590" remote="131251284000000000" Dst="1" />
+<file name="patch-rename-iwl_prefix.sql" server="wvodesigns.com" local="131557540459906919" remote="131251284000000000" Dst="1" />
+<file name="patch-revision_rev_user_fkey.sql" server="wvodesigns.com" local="131557540460642178" remote="131251284000000000" Dst="1" />
+<file name="patch-sites.sql" server="wvodesigns.com" local="131557540464643807" remote="131251284000000000" Dst="1" />
+<file name="patch-tag_summary.sql" server="wvodesigns.com" local="131557540464723811" remote="131251284000000000" Dst="1" />
+<file name="patch-testrun.sql" server="wvodesigns.com" local="131557540466894800" remote="131251284000000000" Dst="1" />
+<file name="patch-ts2pagetitle.sql" server="wvodesigns.com" local="131557540470755245" remote="131251284000000000" Dst="1" />
+<file name="patch-tsearch2funcs.sql" server="wvodesigns.com" local="131557540470850344" remote="131251284000000000" Dst="1" />
+<file name="patch-update_sequences.sql" server="wvodesigns.com" local="131557540472845592" remote="131251284000000000" Dst="1" />
+<file name="patch-updatelog.sql" server="wvodesigns.com" local="131557540477543091" remote="131251284000000000" Dst="1" />
+<file name="patch-uploadstash_sequence.sql" server="wvodesigns.com" local="131557540478268806" remote="131251284000000000" Dst="1" />
+<file name="patch-uploadstash.sql" server="wvodesigns.com" local="131557540478910043" remote="131251284000000000" Dst="1" />
+<file name="patch-user_former_groups.sql" server="wvodesigns.com" local="131557540483591381" remote="131251284000000000" Dst="1" />
+<file name="patch-user_properties.sql" server="wvodesigns.com" local="131557540484251517" remote="131251284000000000" Dst="1" />
+<file name="patch-valid_tag.sql" server="wvodesigns.com" local="131557540484952218" remote="131251284000000000" Dst="1" />
+</dwsync>

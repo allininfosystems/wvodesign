@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="BMP.php" server="wvodesigns.com" local="131557537727079629" remote="131251284000000000" Dst="1" />
+<file name="BitmapMetadataHandler.php" server="wvodesigns.com" local="131557537733586907" remote="131251284000000000" Dst="1" />
+<file name="Bitmap_ClientOnly.php" server="wvodesigns.com" local="131557537734502426" remote="131251284000000000" Dst="1" />
+<file name="Bitmap.php" server="wvodesigns.com" local="131557537735407579" remote="131251284000000000" Dst="1" />
+<file name="DjVu.php" server="wvodesigns.com" local="131557537740282234" remote="131251284000000000" Dst="1" />
+<file name="DjVuImage.php" server="wvodesigns.com" local="131557537741394037" remote="131251284000000000" Dst="1" />
+<file name="Exif.php" server="wvodesigns.com" local="131557537742514289" remote="131251284000000000" Dst="1" />
+<file name="ExifBitmap.php" server="wvodesigns.com" local="131557537747425413" remote="131251284000000000" Dst="1" />
+<file name="GIF.php" server="wvodesigns.com" local="131557537748436191" remote="131251284000000000" Dst="1" />
+<file name="FormatMetadata.php" server="wvodesigns.com" local="131557537749267732" remote="131251284000000000" Dst="1" />
+<file name="GIFMetadataExtractor.php" server="wvodesigns.com" local="131557537754091979" remote="131251284000000000" Dst="1" />
+<file name="IPTC.php" server="wvodesigns.com" local="131557537755504319" remote="131251284000000000" Dst="1" />
+<file name="ImageHandler.php" server="wvodesigns.com" local="131557537755814324" remote="131251284000000000" Dst="1" />
+<file name="Jpeg.php" server="wvodesigns.com" local="131557537761887864" remote="131251284000000000" Dst="1" />
+<file name="JpegMetadataExtractor.php" server="wvodesigns.com" local="131557537762138383" remote="131251284000000000" Dst="1" />
+<file name="MediaHandler.php" server="wvodesigns.com" local="131557537763179965" remote="131251284000000000" Dst="1" />
+<file name="PNGMetadataExtractor.php" server="wvodesigns.com" local="131557537767888569" remote="131251284000000000" Dst="1" />
+<file name="MediaTransformOutput.php" server="wvodesigns.com" local="131557537769586119" remote="131251284000000000" Dst="1" />
+<file name="PNG.php" server="wvodesigns.com" local="131557537769816135" remote="131251284000000000" Dst="1" />
+<file name="SVG.php" server="wvodesigns.com" local="131557537775222143" remote="131251284000000000" Dst="1" />
+<file name="SVGMetadataExtractor.php" server="wvodesigns.com" local="131557537775612153" remote="131251284000000000" Dst="1" />
+<file name="Tiff.php" server="wvodesigns.com" local="131557537776568581" remote="131251284000000000" Dst="1" />
+<file name="XCF.php" server="wvodesigns.com" local="131557537782074027" remote="131251284000000000" Dst="1" />
+<file name="XMP.php" server="wvodesigns.com" local="131557537784080597" remote="131251284000000000" Dst="1" />
+<file name="XMPInfo.php" server="wvodesigns.com" local="131557537786574750" remote="131251284000000000" Dst="1" />
+<file name="XMPValidate.php" server="wvodesigns.com" local="131557537789603298" remote="131251284000000000" Dst="1" />
+</dwsync>

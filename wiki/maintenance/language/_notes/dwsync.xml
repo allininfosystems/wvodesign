@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="StatOutputs.php" server="wvodesigns.com" local="131557540160936137" remote="131251284000000000" Dst="1" />
+<file name="alltrans.php" server="wvodesigns.com" local="131557540161716637" remote="131251284000000000" Dst="1" />
+<file name="checkDupeMessages.php" server="wvodesigns.com" local="131557540166426950" remote="131251284000000000" Dst="1" />
+<file name="checkExtensions.php" server="wvodesigns.com" local="131557540167227948" remote="131251284000000000" Dst="1" />
+<file name="checkLanguage.inc" server="wvodesigns.com" local="131557540168538974" remote="131251284000000000" Dst="1" />
+<file name="checkLanguage.php" server="wvodesigns.com" local="131557540172043174" remote="131251284000000000" Dst="1" />
+<file name="countMessages.php" server="wvodesigns.com" local="131557540174507909" remote="131251284000000000" Dst="1" />
+<file name="date-formats.php" server="wvodesigns.com" local="131557540175343038" remote="131251284000000000" Dst="1" />
+<file name="digit2html.php" server="wvodesigns.com" local="131557540178805589" remote="131251284000000000" Dst="1" />
+<file name="dumpMessages.php" server="wvodesigns.com" local="131557540181062128" remote="131251284000000000" Dst="1" />
+<file name="generateCollationData.php" server="wvodesigns.com" local="131557540182115061" remote="131251284000000000" Dst="1" />
+<file name="generateNormalizerData.php" server="wvodesigns.com" local="131557540185697522" remote="131251284000000000" Dst="1" />
+<file name="langmemusage.php" server="wvodesigns.com" local="131557540188044647" remote="131251284000000000" Dst="1" />
+<file name="languages.inc" server="wvodesigns.com" local="131557540190231906" remote="131251284000000000" Dst="1" />
+<file name="messageTypes.inc" server="wvodesigns.com" local="131557540192502991" remote="131251284000000000" Dst="1" />
+<file name="rebuildLanguage.php" server="wvodesigns.com" local="131557540196037721" remote="131251284000000000" Dst="1" />
+<file name="transstat.php" server="wvodesigns.com" local="131557540196978369" remote="131251284000000000" Dst="1" />
+<file name="messages.inc" server="wvodesigns.com" local="131557540198408661" remote="131251284000000000" Dst="1" />
+<file name="validate.php" server="wvodesigns.com" local="131557540203564162" remote="131251284000000000" Dst="1" />
+<file name="writeMessagesArray.inc" server="wvodesigns.com" local="131557540204956420" remote="131251284000000000" Dst="1" />
+</dwsync>

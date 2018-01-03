@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="DBLockManager.php" server="wvodesigns.com" local="131557537499255300" remote="131251284000000000" Dst="1" />
+<file name="FSLockManager.php" server="wvodesigns.com" local="131557537503937113" remote="131251284000000000" Dst="1" />
+<file name="LSLockManager.php" server="wvodesigns.com" local="131557537505397807" remote="131251284000000000" Dst="1" />
+<file name="LockManager.php" server="wvodesigns.com" local="131557537505732861" remote="131251284000000000" Dst="1" />
+<file name="LockManagerGroup.php" server="wvodesigns.com" local="131557537511147861" remote="131251284000000000" Dst="1" />
+<file name="MemcLockManager.php" server="wvodesigns.com" local="131557537511348266" remote="131251284000000000" Dst="1" />
+<file name="QuorumLockManager.php" server="wvodesigns.com" local="131557537512088383" remote="131251284000000000" Dst="1" />
+<file name="RedisLockManager.php" server="wvodesigns.com" local="131557537517879994" remote="131251284000000000" Dst="1" />
+<file name="ScopedLock.php" server="wvodesigns.com" local="131557537518220020" remote="131251284000000000" Dst="1" />
+</dwsync>

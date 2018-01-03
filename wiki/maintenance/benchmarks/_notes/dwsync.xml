@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="README" server="wvodesigns.com" local="131557539860345840" remote="131251284000000000" Dst="1" />
+<file name="Benchmarker.php" server="wvodesigns.com" local="131557539861180514" remote="131251284000000000" Dst="1" />
+<file name="bench_delete_truncate.php" server="wvodesigns.com" local="131557539867811346" remote="131251284000000000" Dst="1" />
+<file name="bench_HTTP_HTTPS.php" server="wvodesigns.com" local="131557539868881883" remote="131251284000000000" Dst="1" />
+<file name="bench_if_switch.php" server="wvodesigns.com" local="131557539870141607" remote="131251284000000000" Dst="1" />
+<file name="bench_strtr_str_replace.php" server="wvodesigns.com" local="131557539873933824" remote="131251284000000000" Dst="1" />
+<file name="bench_utf8_title_check.php" server="wvodesigns.com" local="131557539877114461" remote="131251284000000000" Dst="1" />
+<file name="bench_wfBaseConvert.php" server="wvodesigns.com" local="131557539877504516" remote="131251284000000000" Dst="1" />
+<file name="bench_wfIsWindows.php" server="wvodesigns.com" local="131557539879996634" remote="131251284000000000" Dst="1" />
+<file name="benchmarkPurge.php" server="wvodesigns.com" local="131557539884857816" remote="131251284000000000" Dst="1" />
+<file name="benchmarkHooks.php" server="wvodesigns.com" local="131557539885948726" remote="131251284000000000" Dst="1" />
+</dwsync>

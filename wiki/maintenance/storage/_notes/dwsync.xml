@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="blob_tracking.sql" server="wvodesigns.com" local="131557540644069548" remote="131251284000000000" Dst="1" />
+<file name="blobs.sql" server="wvodesigns.com" local="131557540647903637" remote="131251284000000000" Dst="1" />
+<file name="checkStorage.php" server="wvodesigns.com" local="131557540651023488" remote="131251284000000000" Dst="1" />
+<file name="compressOld.php" server="wvodesigns.com" local="131557540652088611" remote="131251284000000000" Dst="1" />
+<file name="drop_content_model_info.sql" server="wvodesigns.com" local="131557540655367291" remote="131251284000000000" Dst="1" />
+<file name="dumpRev.php" server="wvodesigns.com" local="131557540657643980" remote="131251284000000000" Dst="1" />
+<file name="fixBug20757.php" server="wvodesigns.com" local="131557540659870336" remote="131251284000000000" Dst="1" />
+<file name="make-blobs" server="wvodesigns.com" local="131557540660562030" remote="131251284000000000" Dst="1" />
+<file name="orphanStats.php" server="wvodesigns.com" local="131557540666087523" remote="131251284000000000" Dst="1" />
+<file name="moveToExternal.php" server="wvodesigns.com" local="131557540667077810" remote="131251284000000000" Dst="1" />
+<file name="recompressTracked.php" server="wvodesigns.com" local="131557540667944191" remote="131251284000000000" Dst="1" />
+<file name="resolveStubs.php" server="wvodesigns.com" local="131557540671281486" remote="131251284000000000" Dst="1" />
+<file name="storageTypeStats.php" server="wvodesigns.com" local="131557540673485192" remote="131251284000000000" Dst="1" />
+<file name="testCompression.php" server="wvodesigns.com" local="131557540674380391" remote="131251284000000000" Dst="1" />
+<file name="trackBlobs.php" server="wvodesigns.com" local="131557540680086750" remote="131251284000000000" Dst="1" />
+</dwsync>
