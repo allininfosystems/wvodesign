@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<navgroups product="vb_badbehavior" permissions="canadminsettings" master="false">
+	<navgroup phrase="statistics_and_logs" hr="true" displayorder="240">
+		<navoption displayorder="80">
+			<phrase>vb_badbehavior_logs</phrase>
+			<link>vb_badbehavior.php</link>
+		</navoption>
+	</navgroup>
+</navgroups>

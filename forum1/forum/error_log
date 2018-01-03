@@ -1,0 +1,179 @@
+[18-Mar-2011 18:51:32] PHP Fatal error:  Call to undefined method stdClass::set() in /home/wvodesig/public_html/forum/includes/functions.php on line 7324
+[18-Mar-2011 18:51:39] PHP Fatal error:  Call to undefined method stdClass::set() in /home/wvodesig/public_html/forum/includes/functions.php on line 7324
+[23-Mar-2011 23:46:04] PHP Fatal error:  Call to undefined method stdClass::set() in /home/wvodesig/public_html/forum/includes/functions.php on line 7324
+[23-Mar-2011 23:46:21] PHP Fatal error:  Call to undefined method stdClass::set() in /home/wvodesig/public_html/forum/includes/functions.php on line 7324
+[23-Mar-2011 23:46:27] PHP Fatal error:  Call to undefined method stdClass::set() in /home/wvodesig/public_html/forum/includes/functions.php on line 7324
+[24-Mar-2011 00:19:47] PHP Fatal error:  Call to undefined method stdClass::set() in /home/wvodesig/public_html/forum/includes/functions.php on line 7324
+[24-Mar-2011 00:19:53] PHP Fatal error:  Call to undefined method stdClass::set() in /home/wvodesig/public_html/forum/includes/functions.php on line 7324
+[24-Mar-2011 00:19:55] PHP Fatal error:  Call to undefined method stdClass::set() in /home/wvodesig/public_html/forum/includes/functions.php on line 7324
+[24-Mar-2011 02:57:08] PHP Fatal error:  Out of memory (allocated 1048576) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[24-Mar-2011 18:50:46] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[24-Mar-2011 23:12:54] PHP Fatal error:  Out of memory (allocated 9437184) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/class_core.php(4430) : eval()'d code on line 446
+[18-Jun-2011 23:02:12] PHP Warning:  require_once(blog.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/wvodesig/public_html/forum/entry.php on line 19
+[18-Jun-2011 23:02:12] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'blog.php' (include_path='.:/usr/local/lib/php') in /home/wvodesig/public_html/forum/entry.php on line 19
+[01-Jul-2011 14:32:00] PHP Fatal error:  Out of memory (allocated 4718592) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[01-Jul-2011 14:59:49] PHP Fatal error:  Out of memory (allocated 1048576) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[01-Jul-2011 15:01:47] PHP Fatal error:  Out of memory (allocated 4718592) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[01-Jul-2011 15:20:05] PHP Fatal error:  Out of memory (allocated 4980736) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[01-Jul-2011 15:51:57] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/calendar.php on line 1493
+[01-Jul-2011 15:53:54] PHP Fatal error:  Out of memory (allocated 1048576) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[01-Jul-2011 15:55:23] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/calendar.php on line 1493
+[01-Jul-2011 15:55:32] PHP Fatal error:  Out of memory (allocated 8126464) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions_online.php on line 371
+[01-Jul-2011 15:57:01] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[01-Jul-2011 15:57:47] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[01-Jul-2011 16:06:58] PHP Fatal error:  Out of memory (allocated 524288) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/calendar.php on line 450
+[01-Jul-2011 17:34:47] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[03-Jul-2011 18:44:35] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 19:33:17] PHP Fatal error:  Out of memory (allocated 524288) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 515
+[03-Jul-2011 19:37:08] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 19:38:21] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 20:16:09] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 20:31:07] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 20:35:06] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 20:35:11] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 20:48:06] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 20:53:05] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 22:00:17] PHP Fatal error:  Out of memory (allocated 524288) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/search.php on line 520
+[03-Jul-2011 22:11:11] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 22:31:12] PHP Fatal error:  Out of memory (allocated 1572864) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[03-Jul-2011 22:32:09] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 23:59:04] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 23:59:15] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 23:59:21] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[03-Jul-2011 23:59:24] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[04-Jul-2011 10:17:21] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[04-Jul-2011 10:23:27] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[04-Jul-2011 10:52:44] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[04-Jul-2011 11:11:32] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[04-Jul-2011 13:08:03] PHP Fatal error:  Out of memory (allocated 1048576) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[04-Jul-2011 13:20:12] PHP Fatal error:  Out of memory (allocated 1572864) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[04-Jul-2011 13:48:06] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[04-Jul-2011 13:54:15] PHP Fatal error:  Out of memory (allocated 4980736) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[04-Jul-2011 14:02:13] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[04-Jul-2011 14:02:15] PHP Fatal error:  Out of memory (allocated 1835008) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[04-Jul-2011 14:14:10] PHP Fatal error:  Out of memory (allocated 1048576) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[04-Jul-2011 14:30:09] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[04-Jul-2011 14:31:04] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/calendar.php on line 1493
+[04-Jul-2011 15:11:23] PHP Fatal error:  Out of memory (allocated 4718592) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[04-Jul-2011 15:27:36] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/calendar.php on line 1493
+[04-Jul-2011 23:21:29] PHP Fatal error:  Out of memory (allocated 1310720) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[04-Jul-2011 23:30:47] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 00:02:37] PHP Fatal error:  Out of memory (allocated 12845056) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions_online.php on line 1844
+[05-Jul-2011 00:09:37] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 09:34:20] PHP Fatal error:  Out of memory (allocated 4980736) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[05-Jul-2011 09:56:49] PHP Fatal error:  Out of memory (allocated 10223616) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/class_core.php(4430) : eval()'d code on line 446
+[05-Jul-2011 10:36:28] PHP Fatal error:  Out of memory (allocated 4980736) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[05-Jul-2011 10:49:47] PHP Fatal error:  Out of memory (allocated 10223616) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/class_core.php(4430) : eval()'d code on line 446
+[05-Jul-2011 11:39:21] PHP Fatal error:  Out of memory (allocated 1310720) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[05-Jul-2011 11:39:21] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[05-Jul-2011 11:39:22] PHP Fatal error:  Out of memory (allocated 3932160) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[05-Jul-2011 12:03:16] PHP Fatal error:  Out of memory (allocated 4718592) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[05-Jul-2011 12:17:17] PHP Fatal error:  Out of memory (allocated 12320768) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions_online.php on line 371
+[05-Jul-2011 12:17:28] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[05-Jul-2011 12:33:16] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[05-Jul-2011 12:44:12] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 12:44:18] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 13:18:31] PHP Fatal error:  Out of memory (allocated 1048576) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[05-Jul-2011 13:39:15] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 13:44:21] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[05-Jul-2011 14:18:21] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[05-Jul-2011 14:25:15] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[05-Jul-2011 14:28:17] PHP Fatal error:  Out of memory (allocated 1048576) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[05-Jul-2011 14:43:26] PHP Fatal error:  Out of memory (allocated 4718592) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[05-Jul-2011 15:00:19] PHP Fatal error:  Out of memory (allocated 9175040) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions_online.php on line 1844
+[05-Jul-2011 15:35:40] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 15:37:17] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[05-Jul-2011 16:10:22] PHP Fatal error:  Out of memory (allocated 1572864) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[05-Jul-2011 16:41:15] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 17:32:41] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 18:18:11] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 18:18:20] PHP Fatal error:  Out of memory (allocated 1572864) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[05-Jul-2011 18:26:08] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[05-Jul-2011 18:29:05] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 19:04:07] PHP Fatal error:  Out of memory (allocated 10223616) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/class_core.php(4430) : eval()'d code on line 446
+[05-Jul-2011 19:04:07] PHP Fatal error:  Out of memory (allocated 9961472) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/class_core.php(4430) : eval()'d code on line 446
+[05-Jul-2011 19:04:07] PHP Fatal error:  Out of memory (allocated 9961472) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/class_core.php(4430) : eval()'d code on line 446
+[05-Jul-2011 19:04:07] PHP Fatal error:  Out of memory (allocated 10223616) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/class_core.php(4430) : eval()'d code on line 446
+[05-Jul-2011 19:04:08] PHP Fatal error:  Out of memory (allocated 10223616) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/class_core.php(4430) : eval()'d code on line 446
+[05-Jul-2011 19:04:11] PHP Fatal error:  Out of memory (allocated 8126464) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions_editor.php on line 596
+[05-Jul-2011 19:04:11] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 19:04:11] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 19:04:12] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 19:04:12] PHP Fatal error:  Out of memory (allocated 10223616) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/class_core.php(4430) : eval()'d code on line 446
+[05-Jul-2011 19:13:02] PHP Fatal error:  Out of memory (allocated 17039360) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/class_core.php(4430) : eval()'d code on line 473
+[05-Jul-2011 19:19:13] PHP Fatal error:  Out of memory (allocated 1310720) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[05-Jul-2011 19:32:09] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 19:40:10] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 19:42:26] PHP Fatal error:  Out of memory (allocated 1310720) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[05-Jul-2011 20:32:38] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[05-Jul-2011 20:56:00] PHP Fatal error:  Out of memory (allocated 4980736) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[05-Jul-2011 21:11:48] PHP Fatal error:  Out of memory (allocated 4980736) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[05-Jul-2011 21:31:45] PHP Fatal error:  Out of memory (allocated 524288) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/memberlist.php on line 431
+[05-Jul-2011 21:34:48] PHP Fatal error:  Out of memory (allocated 4980736) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[05-Jul-2011 21:53:43] PHP Fatal error:  Out of memory (allocated 4718592) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[05-Jul-2011 23:02:48] PHP Fatal error:  Out of memory (allocated 4718592) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[06-Jul-2011 00:44:12] PHP Fatal error:  Out of memory (allocated 10223616) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/class_core.php(4430) : eval()'d code on line 446
+[06-Jul-2011 00:51:16] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 01:01:16] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 05:07:39] PHP Fatal error:  Out of memory (allocated 1310720) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[06-Jul-2011 05:48:39] PHP Fatal error:  Out of memory (allocated 4980736) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[06-Jul-2011 05:49:21] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 05:52:26] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 05:58:36] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 06:53:27] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 07:25:35] PHP Fatal error:  Out of memory (allocated 1048576) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[06-Jul-2011 07:52:54] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 07:52:59] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 07:53:01] PHP Fatal error:  Out of memory (allocated 9437184) (tried to allocate 122880 bytes) in /home/wvodesig/public_html/forum/packages/vbforum/search/result/post.php on line 189
+[06-Jul-2011 07:58:27] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 09:50:11] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 10:00:27] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 10:28:32] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[06-Jul-2011 10:51:40] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 10:53:38] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 10:55:34] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 10:59:28] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/calendar.php on line 1493
+[06-Jul-2011 11:56:18] PHP Fatal error:  Out of memory (allocated 524288) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/register.php on line 429
+[06-Jul-2011 11:59:38] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[06-Jul-2011 12:21:51] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/calendar.php on line 1493
+[06-Jul-2011 12:22:40] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[06-Jul-2011 12:33:34] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 12:46:40] PHP Fatal error:  Out of memory (allocated 4718592) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[06-Jul-2011 12:46:43] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 12:46:45] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 13:13:31] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 13:32:53] PHP Fatal error:  Out of memory (allocated 6553600) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions_online.php on line 371
+[06-Jul-2011 14:02:40] PHP Fatal error:  Out of memory (allocated 1572864) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[06-Jul-2011 14:11:34] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 14:11:37] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 14:52:46] PHP Fatal error:  Out of memory (allocated 4718592) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[06-Jul-2011 15:10:03] PHP Fatal error:  Out of memory (allocated 262144) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/member.php on line 494
+[06-Jul-2011 16:28:39] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 16:28:39] PHP Fatal error:  Out of memory (allocated 1310720) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[06-Jul-2011 16:35:39] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[06-Jul-2011 16:37:51] PHP Fatal error:  Out of memory (allocated 1048576) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[06-Jul-2011 17:09:55] PHP Fatal error:  Out of memory (allocated 4980736) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[07-Jul-2011 10:15:42] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[07-Jul-2011 10:17:38] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[07-Jul-2011 10:19:28] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[07-Jul-2011 10:28:39] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[07-Jul-2011 10:30:36] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[07-Jul-2011 10:34:37] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[07-Jul-2011 10:45:50] PHP Fatal error:  Out of memory (allocated 1572864) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/init.php on line 532
+[07-Jul-2011 11:06:23] PHP Fatal error:  Out of memory (allocated 4718592) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[07-Jul-2011 11:08:36] PHP Fatal error:  Out of memory (allocated 524288) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/forumdisplay.php on line 500
+[07-Jul-2011 12:23:37] PHP Fatal error:  Out of memory (allocated 262144) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/member.php on line 494
+[07-Jul-2011 12:39:50] PHP Fatal error:  Out of memory (allocated 17039360) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/class_core.php(4430) : eval()'d code on line 473
+[07-Jul-2011 13:05:09] PHP Fatal error:  Out of memory (allocated 4718592) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions.php on line 5645
+[07-Jul-2011 13:15:02] PHP Fatal error:  Out of memory (allocated 12320768) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/includes/functions_online.php on line 371
+[07-Jul-2011 13:20:43] PHP Fatal error:  Out of memory (allocated 262144) (tried to allocate 491520 bytes) in /home/wvodesig/public_html/forum/member.php on line 494
+[07-Jul-2011 13:24:45] PHP Fatal error:  Out of memory (allocated 1048576) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/register.php on line 1648
+[07-Jul-2011 13:26:57] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/calendar.php on line 1493
+[07-Jul-2011 13:46:58] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/calendar.php on line 1493
+[07-Jul-2011 13:54:50] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[07-Jul-2011 13:54:53] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[07-Jul-2011 14:15:04] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/profile.php on line 1797
+[07-Jul-2011 14:15:22] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[07-Jul-2011 14:15:30] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[07-Jul-2011 14:15:31] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815
+[07-Jul-2011 14:15:46] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 1966080 bytes) in /home/wvodesig/public_html/forum/showthread.php on line 1815

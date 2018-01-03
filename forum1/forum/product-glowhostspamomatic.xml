@@ -1,0 +1,1222 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<product productid="glowhostspamomatic" active="1">
+	<title><![CDATA[GlowHost - Spam-O-Matic]]></title>
+	<description>Ultimate solution to defend against SPAM: Check new registrations from StopForumSpam database, auto moderate posts against custom word-list and Akismet service.</description>
+	<version>2.0.2</version>
+
+	<url><![CDATA[http://www.vbulletin.org/forum/showthread.php?t=248042]]></url>
+	<!-- <versioncheckurl><![CDATA[http://glowhost.com/]]></versioncheckurl> -->
+
+	<dependencies>
+		<dependency dependencytype="vbulletin" minversion="4.0.0" maxversion="" />
+	</dependencies>
+
+	<codes>
+		<code version="2.0.0">
+			<installcode><![CDATA[
+
+				$db->show_errors();
+
+				$db->query_write('CREATE TABLE IF NOT EXISTS `'.TABLE_PREFIX.'glowhostspamomatic_log`(
+        							`date` DATETIME NOT NULL,
+        							`ip` VARCHAR(15) NOT NULL,
+        							`email` VARCHAR(255) NOT NULL,
+        							`username` VARCHAR(255) NOT NULL,
+        							`message` VARCHAR(255) NOT NULL,
+        							`is_blocked` TINYINT NOT NULL DEFAULT "0",
+        							`user_hash` VARCHAR(50) NOT NULL,
+        							`user_id` INT NOT NULL
+						         ) TYPE=MyISAM; ');
+
+
+     			$db->query_write('CREATE TABLE IF NOT EXISTS `'.TABLE_PREFIX.'glowhostspamomatic_remotecache`(
+        							`date` DATETIME NOT NULL,
+        							`field` VARCHAR(20) NOT NULL,
+        							`is_spambot` INT NOT NULL,
+        							`data` VARCHAR(255) NOT NULL
+						         ) TYPE=MyISAM; ');
+
+				$db->query_write('CREATE TABLE IF NOT EXISTS `'.TABLE_PREFIX.'glowhostspamomatic_stats`(
+        							`denied` INT NOT NULL DEFAULT "0",
+									`banned` INT NOT NULL DEFAULT "0",
+									`moderated` INT NOT NULL DEFAULT "0",
+									`s_sfs` INT NOT NULL DEFAULT "0",
+									`s_akismet` INT NOT NULL DEFAULT "0",
+									`removed` INT NOT NULL DEFAULT "0"
+						         ) TYPE=MyISAM; ');
+
+				$db->query_write('INSERT INTO `'.TABLE_PREFIX.'glowhostspamomatic_stats` (
+									`denied`,
+									`banned`,
+									`moderated`,
+									`s_sfs`,
+									`s_akismet`,
+									`removed`
+									) VALUES (
+									0, 0, 0, 0, 0, 0
+									); ');
+
+				$db->query_write('ALTER TABLE `'.TABLE_PREFIX.'glowhostspamomatic_log` ADD INDEX ( `user_id` ); ');
+				$db->query_write('ALTER TABLE `'.TABLE_PREFIX.'glowhostspamomatic_log` ADD INDEX ( `date` ); ');
+				$db->query_write('ALTER TABLE `'.TABLE_PREFIX.'glowhostspamomatic_remotecache` ADD INDEX ( `data` , `field` ); ');
+
+
+			]]></installcode>
+			<uninstallcode><![CDATA[
+
+				$db->hide_errors();
+
+				$db->query_write('DROP TABLE IF EXISTS '.TABLE_PREFIX.'glowhostspamomatic_log; ');
+				$db->query_write('DROP TABLE IF EXISTS '.TABLE_PREFIX.'glowhostspamomatic_remotecache; ');
+				$db->query_write('DROP TABLE IF EXISTS '.TABLE_PREFIX.'glowhostspamomatic_stats; ');
+
+				$db->show_errors();
+
+    		]]></uninstallcode>
+		</code>
+	</codes>
+
+	<templates>
+
+		<!-- Easy Cleanup -->
+
+		<template name="glowhostspamomatic_bsc" templatetype="template" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[
+
+
+					<div id="pagetitle">
+						<!-- <h1>$vbphrase[glowhostspamomatic_bsc_title]</h1> -->
+
+						<h2 class="blockhead">$vbphrase[glowhostspamomatic_bsc_title]</h2>
+
+						<if condition="$_REQUEST['do'] == 'spamcleanconfirm'">
+
+							<form action="inlinemod.php" method="post" name="spamconfirm" id="spamconfirm">
+								<div class="blockbody formcontrols">
+									<div class="section">
+										<div class="blockrow">
+											<a href="">Return to the forums</a><br><br>
+											$message
+										</div>
+									</div>
+								</div>
+
+								<div class="blockfoot actionbuttons">
+									<div class="group">
+										<input type="hidden" name="do" value="dospamclean" />
+										<input type="hidden" name="postids" value="$postids" />
+										<input type="hidden" name="userids" value="$userids" />
+										<input type="hidden" name="guestids" value="$guestids" />
+										<input type="hidden" name="securitytoken" value="$securitytoken" />
+										<input type="submit" class="button" value="$vbphrase[glowhostspamomatic_bsc_confirm_button]" />
+									</div>
+								</div>
+							</form>
+						</if>
+
+						<if condition="$_POST['do'] == 'dospamclean'">
+							<div class="blockbody formcontrols">
+								<div class="section">
+									<div class="blockrow">
+										<a href="">Return to the forums</a><br><br>
+										<table border="0">
+											<tr>
+												<td>$message</td>
+												<td style="text-align:center" valign="top">
+													<a href="http://glowhost.com" target="_blank" title="GlowHost Web Hosting With vBulletin Support"><img border="0" src="http://glowhost.com/images/avatars/web-hosting.png"></a><br>
+													<a href="http://glowhost.com/order/order.php?cid=113" target="_blank" title="GlowHost Web Hosting With vBulletin Support">3 Free Months Of Hosting At GlowHost!</a><br>
+													Use Coupon Code: <b>SPAMOMATIC</b><br><br>
+													<a href="http://www.shareasale.com/shareasale.cfm?merchantID=17701" target="_blank" title="GlowHost Web Hosting With vBulletin Support">Join the GlowHost Affiliate Program and earn $125 per sign up.</a>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+						</if>
+
+					</div>
+
+		]]></template>
+	</templates>
+
+	<!-- Easy Cleanup END -->
+
+	<plugins>
+		<plugin active="1">
+			<title>GlowHost - Spam-O-Matic: Registration Pre-Check</title>
+			<hookname>register_addmember_process</hookname>
+			<phpcode><![CDATA[
+
+				$vbghsfs_Purged = false;
+				$vbghsfs_userHash = '';
+
+
+
+				if (empty($userdata->errors)) {
+
+					require_once('includes/functions_ghsom.php');
+					VBGHSFS_Process();
+
+					if ($vbulletin->options['glowhostspamomatic_noob_enabled'] == 1) { //move users....
+
+						$noob_group_id = $vbulletin->options['glowhostspamomatic_noob_group_id'];
+
+						if ($noob_group_id != '') $userdata->set('usergroupid', $noob_group_id);
+
+					}
+
+				}
+
+			]]></phpcode>
+		</plugin>
+
+
+		<plugin active="1">
+			<title>GlowHost - Spam-O-Matic: Finish Registration</title>
+			<hookname>register_addmember_complete</hookname>
+			<phpcode><![CDATA[
+
+				require_once('includes/functions_ghsom.php');
+				VBGHSFS_UpdateLog();
+
+			]]></phpcode>
+		</plugin>
+
+		<!-- AKISMET -->
+		<plugin active="1" executionorder="5">
+			<title>GlowHost - Spam-O-Matic: AKISMET SPAM filter</title>
+			<hookname>newpost_process</hookname>
+			<phpcode><![CDATA[
+
+				if ($vbulletin->options['glowhostspamomatic_akismet_enabled'] == 1) {
+
+					require_once('includes/functions_ghsom.php');
+
+					foreach (array('glowhostspamomatic_bsc_protect_group', 'glowhostspamomatic_bsc_protect_user') as $option) {
+						$vbulletin->options[$option] = clean_options_list($vbulletin->options[$option]);
+					}
+
+					$checkuser = $vbulletin->db->query_first("SELECT * FROM " . TABLE_PREFIX . "user WHERE userid=".$vbulletin->userinfo['userid']);
+
+					if ((!is_member_of($checkuser, explode(",", $vbulletin->options['glowhostspamomatic_bsc_protect_group']))) && (!in_array($vbulletin->userinfo['userid'], explode(",", $vbulletin->options['glowhostspamomatic_bsc_protect_user'])))) {
+
+						if (($vbulletin->userinfo['posts'] < $vbulletin->options['glowhostspamomatic_akismet_postcount']) || ($vbulletin->options['glowhostspamomatic_akismet_postcount'] == 0)) { // check for postcount is lower than specified in settings
+
+							$key = $vbulletin->options['glowhostspamomatic_akismet_key'];
+							$vbghsfs_host = $key.'.rest.akismet.com';
+							$comment['user_ip'] = $_SERVER['REMOTE_ADDR'];
+							$comment['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
+							$comment['referrer'] = $_SERVER['HTTP_REFERER'];
+							$comment['blog'] = $vbulletin->options['bburl'];
+							$comment['comment_author'] = $vbulletin->userinfo['username'];
+							$comment['comment_content'] = $post['message'];
+
+							if (VBGHSFS_AkismetCheckComment($comment, $vbghsfs_host)) {
+								$dataman->set('visible', 0);
+								$post['visible'] = 0;
+
+								$sql = 'INSERT INTO '.TABLE_PREFIX.'glowhostspamomatic_log(`date`, `ip`, `email`, `username`, `message`, `is_blocked`, `user_hash`) VALUES (now(), "'.addslashes($_SERVER['REMOTE_ADDR']).'", "'.addslashes($vbulletin->userinfo['email']).'", "'.addslashes($vbulletin->userinfo['username']).'", "<a href=\"../'.$vbulletin->config[Misc][modcpdir].'/moderate.php?do=posts\">Post put under moderation based on Akismet result</a>", "0", ""); ';
+
+								$vbulletin->db->query($sql);
+
+								$sql = 'UPDATE '.TABLE_PREFIX.'glowhostspamomatic_stats SET moderated = moderated + 1; ';
+								$vbulletin->db->query($sql);
+							}
+						}
+					}
+				}
+			]]></phpcode>
+		</plugin>
+		<!-- AKISMET END -->
+
+		<!-- Keyword, URL moderation -->
+
+		<plugin active="1" product="glowhostspamomatic">
+			<title>GlowHost - Spam-O-Matic: First Post/Thread Control</title>
+			<hookname>threadfpdata_presave</hookname>
+			<phpcode><![CDATA[
+
+				$skip_post = false;
+				if (!empty($this->info['is_automated'])) if ($this->info['is_automated'] == 'rss') {
+					$skip_post = true;
+				}
+
+				if (!$skip_post) {
+					//Let's create new group for newbies members
+					$is_noob_user = false;
+					$noob_group_id = $this->registry->options['glowhostspamomatic_noob_group_id'];
+					$checkuser = $this->dbobject->query_first("SELECT * FROM " . TABLE_PREFIX . "user WHERE userid=".$this->registry->userinfo['userid']);
+
+					if (is_member_of($checkuser, $noob_group_id)) $is_noob_user = true;
+
+					require_once('includes/functions_ghsom.php');
+
+					$is_protected_user = false;
+					foreach (array('glowhostspamomatic_bsc_protect_group', 'glowhostspamomatic_bsc_protect_user') as $option) {
+						$this->registry->options[$option] = clean_options_list($this->registry->options[$option]);
+					}
+
+					if ((is_member_of($checkuser, explode(",", $this->registry->options['glowhostspamomatic_bsc_protect_group']))) || (in_array($this->registry->userinfo['userid'], explode(",", $this->registry->options['glowhostspamomatic_bsc_protect_user'])))) {
+						$is_protected_user = true;
+					}
+
+					if ($this->registry->userinfo['userid'] == 0) {
+						$is_protected_user = false;
+					}
+
+					if ($this->registry->options['glowhostspamomatic_automodenabled'] == 1) { //automod enabled
+
+						$automod_apply = false;
+						if ($this->registry->options['glowhostspamomatic_noob_enabled'] == 1) {
+
+							if ($this->registry->options['glowhostspamomatic_noob_restrict_automod'] == 1) { // noob enabled and automod restricted.... check the group
+
+								if ($is_noob_user) $automod_apply = true; // he-he, let's apply auto-mod
+
+							} else if (!$is_protected_user) $automod_apply = true; // no restriction.... only automod settings matter
+
+						} else if (!$is_protected_user) $automod_apply = true; //  noob disabled.... only automod settings matter
+
+						if ($automod_apply) {
+							if (($this->registry->userinfo['posts'] < $this->registry->options['glowhostspamomatic_automodpostcount']) || ($this->registry->options['glowhostspamomatic_automodpostcount'] == 0)) { // check for postcount is lower than specified in settings
+								$keywords = explode("\n", $this->registry->options['glowhostspamomatic_automodkeywords']);
+								$keywords = array_map('trim', $keywords);
+
+								if (str_replace($keywords, '', strtolower($this->fetch_field('pagetext', 'post'))) != strtolower($this->fetch_field('pagetext', 'post')) && !can_moderate()) {
+
+									if ($this->registry->options['glowhostspamomatic_automodpostaction'] == 1) standard_error(fetch_error('glowhostspamomatic_reject_post', $query));
+									else {
+
+										$this->set('visible', 0);
+
+										$sql = 'INSERT INTO '.TABLE_PREFIX.'glowhostspamomatic_log(`date`, `ip`, `email`, `username`, `message`, `is_blocked`, `user_hash`) VALUES (now(), "'.addslashes($_SERVER['REMOTE_ADDR']).'", "'.addslashes($this->registry->userinfo['email']).'", "'.addslashes($this->registry->userinfo['username']).'", "<a href=\"../'.$this->registry->config['Misc']['modcpdir'].'/moderate.php?do=posts\">Post put under moderation based on Auto-Moderation Keywords</a>", "0", ""); ';
+
+										$this->dbobject->query($sql);
+
+										$sql = 'UPDATE '.TABLE_PREFIX.'glowhostspamomatic_stats SET moderated = moderated + 1; ';
+										$this->dbobject->query($sql);
+
+									}
+
+								} else {
+
+									$link_count = substr_count($this->fetch_field('pagetext', 'post'), 'http:');
+									$link_count += substr_count($this->fetch_field('pagetext', 'post'), '@');
+
+									if (($link_count > $this->registry->options['glowhostspamomatic_automodurls']) && !can_moderate()) {
+
+										if ($this->registry->options['glowhostspamomatic_automodpostaction'] == 1) standard_error(fetch_error('glowhostspamomatic_reject_post', $query));
+										else {
+
+											$this->set('visible', 0);
+
+											$sql = 'INSERT INTO '.TABLE_PREFIX.'glowhostspamomatic_log(`date`, `ip`, `email`, `username`, `message`, `is_blocked`, `user_hash`) VALUES (now(), "'.addslashes($_SERVER['REMOTE_ADDR']).'", "'.addslashes($this->registry->userinfo['email']).'", "'.addslashes($this->registry->userinfo['username']).'", "<a href=\"../'.$this->registry->config['Misc']['modcpdir'].'/moderate.php?do=posts\">Post put under moderation based on Auto-Moderation URL count</a>", "0", ""); ';
+
+											$this->dbobject->query($sql);
+
+											$sql = 'UPDATE '.TABLE_PREFIX.'glowhostspamomatic_stats SET moderated = moderated + 1; ';
+											$this->dbobject->query($sql);
+
+										}
+									}
+								}
+							}
+						}
+					}
+
+					if ($this->registry->options['glowhostspamomatic_noob_enabled'] == 1) {
+						if ($this->registry->options['glowhostspamomatic_noob_autopromote'] == 1) {
+							if ($is_noob_user) { // he-he, let's apply auto-mod
+								if ($this->registry->userinfo['posts'] >= $this->registry->options['glowhostspamomatic_noob_promotepostcount']) {
+
+									$sql = 'UPDATE `'.TABLE_PREFIX.'user` SET `usergroupid` = '.$this->registry->options['glowhostspamomatic_noob_reg_ugroup'].' WHERE `userid` = '.$this->registry->userinfo['userid'].'; ';
+									$this->dbobject->query($sql);
+
+								}
+							}
+						}
+					}
+				}
+			]]></phpcode>
+		</plugin>
+
+		<plugin active="1" product="glowhostspamomatic">
+			<title>GlowHost - Spam-O-Matic: Replies Control</title>
+			<hookname>postdata_presave</hookname>
+			<phpcode><![CDATA[
+
+				$skip_post = false;
+				if (!empty($this->info['is_automated'])) if ($this->info['is_automated'] == 'rss') {
+					$skip_post = true;
+				}
+
+				if (!$skip_post) {
+
+					//Let's create new group for newbies members
+					$is_noob_user = false;
+					$noob_group_id = $this->registry->options['glowhostspamomatic_noob_group_id'];
+					$checkuser = $this->dbobject->query_first("SELECT * FROM " . TABLE_PREFIX . "user WHERE userid=".$this->registry->userinfo['userid']);
+
+					if (is_member_of($checkuser, $noob_group_id)) $is_noob_user = true;
+
+					require_once('includes/functions_ghsom.php');
+
+					$is_protected_user = false;
+					foreach (array('glowhostspamomatic_bsc_protect_group', 'glowhostspamomatic_bsc_protect_user') as $option) {
+						$this->registry->options[$option] = clean_options_list($this->registry->options[$option]);
+					}
+
+					if ((is_member_of($checkuser, explode(",", $this->registry->options['glowhostspamomatic_bsc_protect_group']))) || (in_array($this->registry->userinfo['userid'], explode(",", $this->registry->options['glowhostspamomatic_bsc_protect_user'])))) {
+						$is_protected_user = true;
+					}
+
+					if ($this->registry->userinfo['userid'] == 0) {
+						$is_protected_user = false;
+					}
+
+					if ($this->registry->options['glowhostspamomatic_automodenabled'] == 1) { //automod enabled
+
+						$automod_apply = false;
+						if ($this->registry->options['glowhostspamomatic_noob_enabled'] == 1) {
+
+							if ($this->registry->options['glowhostspamomatic_noob_restrict_automod'] == 1) { // noob enabled and automod restricted.... check the group
+
+								if ($is_noob_user) $automod_apply = true; // he-he, let's apply auto-mod
+
+							} else if (!$is_protected_user) $automod_apply = true; // no restriction.... only automod settings matter
+
+						} else if (!$is_protected_user) $automod_apply = true; //  noob disabled.... only automod settings matter
+
+						if ($automod_apply) {
+							if (($this->registry->userinfo['posts'] < $this->registry->options['glowhostspamomatic_automodpostcount']) || ($this->registry->options['glowhostspamomatic_automodpostcount'] == 0)) { // check for postcount is lower than specified in settings
+								$keywords = explode("\n", $this->registry->options['glowhostspamomatic_automodkeywords']);
+								$keywords = array_map('trim', $keywords);
+
+								if (str_replace($keywords, '', strtolower($this->fetch_field('pagetext', 'post'))) != strtolower($this->fetch_field('pagetext', 'post')) AND !can_moderate()) {
+
+									if ($this->registry->options['glowhostspamomatic_automodpostaction'] == 1) standard_error(fetch_error('glowhostspamomatic_reject_post', $query));
+									else {
+
+										$this->set('visible', 0);
+
+										$sql = 'INSERT INTO '.TABLE_PREFIX.'glowhostspamomatic_log(`date`, `ip`, `email`, `username`, `message`, `is_blocked`, `user_hash`) VALUES (now(), "'.addslashes($_SERVER['REMOTE_ADDR']).'", "'.addslashes($this->registry->userinfo['email']).'", "'.addslashes($this->registry->userinfo['username']).'", "<a href=\"../'.$this->registry->config['Misc']['modcpdir'].'/moderate.php?do=posts\">Post put under moderation based on Auto-Moderation Keywords</a>", "0", ""); ';
+
+										$this->dbobject->query($sql);
+
+										$sql = 'UPDATE '.TABLE_PREFIX.'glowhostspamomatic_stats SET moderated = moderated + 1; ';
+										$this->dbobject->query($sql);
+
+									}
+
+								} else {
+
+									$link_count = substr_count($this->fetch_field('pagetext', 'post'), 'http:');
+									$link_count += substr_count($this->fetch_field('pagetext', 'post'), '@');
+
+									if (($link_count > $this->registry->options['glowhostspamomatic_automodurls']) && !can_moderate()) {
+
+										if ($this->registry->options['glowhostspamomatic_automodpostaction'] == 1) standard_error(fetch_error('glowhostspamomatic_reject_post', $query));
+										else  {
+
+											$this->set('visible', 0);
+
+											$sql = 'INSERT INTO '.TABLE_PREFIX.'glowhostspamomatic_log(`date`, `ip`, `email`, `username`, `message`, `is_blocked`, `user_hash`) VALUES (now(), "'.addslashes($_SERVER['REMOTE_ADDR']).'", "'.addslashes($this->registry->userinfo['email']).'", "'.addslashes($this->registry->userinfo['username']).'", "<a href=\"../'.$this->registry->config['Misc']['modcpdir'].'/moderate.php?do=posts\">Post put under moderation based on Auto-Moderation URL count</a>", "0", ""); ';
+
+											$this->dbobject->query($sql);
+
+											$sql = 'UPDATE '.TABLE_PREFIX.'glowhostspamomatic_stats SET moderated = moderated + 1; ';
+											$this->dbobject->query($sql);
+
+										}
+
+									}
+
+								}
+							}
+						}
+					}
+
+					if ($this->registry->options['glowhostspamomatic_noob_enabled'] == 1) {
+						if ($this->registry->options['glowhostspamomatic_noob_autopromote'] == 1) {
+							if ($is_noob_user) { // he-he, let's apply auto-mod
+								if ($this->registry->userinfo['posts'] >= $this->registry->options['glowhostspamomatic_noob_promotepostcount']) {
+
+									$sql = 'UPDATE `'.TABLE_PREFIX.'user` SET `usergroupid` = '.$this->registry->options['glowhostspamomatic_noob_reg_ugroup'].' WHERE `userid` = '.$this->registry->userinfo['userid'].'; ';
+									$this->dbobject->query($sql);
+
+								}
+							}
+						}
+					}
+				}
+			]]></phpcode>
+		</plugin>
+		<!-- Keyword, URL moderation END -->
+
+		<!-- Easy Cleanup -->
+
+		<plugin active="1" product="glowhostspamomatic" executionorder="10">
+			<title>Menu item in Moderation Tools</title>
+			<hookname>showthread_start</hookname>
+			<phpcode><![CDATA[
+
+			     $template_hook[inlinemod_post_bottom] .= '<li><label><input type="radio" name="do" value="spamcleanconfirm" tabindex="42" /> '.$vbphrase['glowhostspamomatic_bsc_title'].'...</label></li>';
+
+			]]></phpcode>
+		</plugin>
+
+		<plugin active="1" product="glowhostspamomatic" executionorder="5">
+			<title>Form actions</title>
+			<hookname>inlinemod_action_switch</hookname>
+			<phpcode><![CDATA[
+
+				require_once('includes/functions_ghsom.php');
+				VBGHSFS_cleanupProcess();
+
+			]]></phpcode>
+		</plugin>
+
+		<!-- Easy Cleanup END -->
+
+		<!-- Stats -->
+
+		<plugin active="1" product="glowhostspamomatic" executionorder="50">
+			<title>Stats render</title>
+			<hookname>forumhome_complete</hookname>
+			<phpcode><![CDATA[
+
+				if (($vbulletin->options['glowhostspamomatic_stat_show_denied'] == 1) || ($vbulletin->options['glowhostspamomatic_stat_show_banned'] == 1)) {
+					//$vbulletin->
+
+					$stats = $vbulletin->db->query_first("SELECT * FROM " . TABLE_PREFIX . "glowhostspamomatic_stats");
+
+					//echo '<pre>';
+					//print_r($vbulletin->stylevars['imgdir_misc']);
+					//echo '</pre>';
+
+					$template_hook[forumhome_wgo_pos2] .= '
+
+					 	<div class="wgo_subblock section">
+			               <h3 class="blocksubhead"><img src="'.$vbulletin->stylevars['imgdir_misc']['imagedir'].'/forum_stats.png" alt="Spam-O-Matic Statistics" />';
+
+			        if ($vbulletin->options['glowhostspamomatic_stat_show_link'] == 1) {
+			        	$template_hook[forumhome_wgo_pos2] .= '<a href="http://www.vbulletin.org/forum/showthread.php?t=248042" target="_blank">Spam-O-Matic Statistics</a>';
+			        } else {
+			        	$template_hook[forumhome_wgo_pos2] .= 'Spam-O-Matic Statistics';
+			        }
+
+
+			        $template_hook[forumhome_wgo_pos2] .= '       </h3>
+			               <div>';
+
+			        if (($vbulletin->options['glowhostspamomatic_stat_show_denied'] == 1) && ($stats['denied'] > 0)) {
+			        	$template_hook[forumhome_wgo_pos2] .= '<p>'.$stats['denied'].' Spammer'.(($stats['denied'] > 1)?'s':'').' Denied Registration</p>';
+			        }
+
+			        if (($vbulletin->options['glowhostspamomatic_stat_show_banned'] == 1) && ($stats['banned'] > 0)) {
+			        	$template_hook[forumhome_wgo_pos2] .= '<p>'.$stats['banned'].' Spammer'.(($stats['banned'] > 1)?'s':'').' Permanently Banned</p>';
+			        }
+
+			        if (($vbulletin->options['glowhostspamomatic_stat_show_s_sfs'] == 1) && ($stats['s_sfs'] > 0)) {
+			        	$template_hook[forumhome_wgo_pos2] .= '<p>'.$stats['s_sfs'].' Spammer'.(($stats['s_sfs'] > 1)?'s':'').' submitted to StopForumSpam</p>';
+			        }
+
+			        if (($vbulletin->options['glowhostspamomatic_stat_show_s_akismet'] == 1) && ($stats['s_akismet'] > 0)) {
+			        	$template_hook[forumhome_wgo_pos2] .= '<p>'.$stats['s_akismet'].' Spammer'.(($stats['s_akismet'] > 1)?'s':'').' submitted to Akismet</p>';
+			        }
+
+			        if (($vbulletin->options['glowhostspamomatic_stat_show_mod'] == 1) && ($stats['moderated'] > 0)) {
+			        	$template_hook[forumhome_wgo_pos2] .= '<p>'.$stats['moderated'].' Spammy Post'.(($stats['moderated'] > 1)?'s':'').' Automatically Moderated</p>';
+			        }
+
+			         if (($vbulletin->options['glowhostspamomatic_stat_show_removed'] == 1) && ($stats['removed'] > 0)) {
+			        	$template_hook[forumhome_wgo_pos2] .= '<p>'.$stats['removed'].' Spammy Post'.(($stats['removed'] > 1)?'s':'').' Removed</p>';
+			        }
+
+			        $template_hook[forumhome_wgo_pos2] .= '       </div>
+			           </div>
+					';
+
+				}
+
+			]]></phpcode>
+		</plugin>
+
+		<!-- Stats END -->
+
+		<!-- Affiliate + Credits -->
+
+		<plugin active="1" product="glowhostspamomatic" executionorder="50">
+			<title>Affiliate link placement</title>
+			<hookname>parse_templates</hookname>
+			<phpcode><![CDATA[
+
+				if ($vbulletin->options['glowhostspamomatic_affiliate_enable'] == 1)
+				if ($vbulletin->options['glowhostspamomatic_affiliate_place'] == 0) {
+					//if (!$vbulletin->userinfo['userid']) {
+						if ($vbulletin->options['glowhostspamomatic_affiliate_id'] != '') {
+							$vbphrase['powered_by_vbulletin'] .= '<br /><a href="http://www.shareasale.com/r.cfm?b=249098&u='.$vbulletin->options['glowhostspamomatic_affiliate_id'].'&m=17701&urllink=&afftrack=" target="_blank">'.$vbulletin->options['glowhostspamomatic_affiliate_text'].'</a>';
+						} else {
+							$vbphrase['powered_by_vbulletin'] .= '<br /><a href="http://glowhost.com" target="_blank">'.$vbulletin->options['glowhostspamomatic_affiliate_text'].'</a>';
+						}
+
+					//}
+				} else {
+					if ($vbulletin->options['glowhostspamomatic_affiliate_id'] != '') {
+						$template_hook['footer_links'] .= '<li><a href="http://www.shareasale.com/r.cfm?b=249098&u='.$vbulletin->options['glowhostspamomatic_affiliate_id'].'&m=17701&urllink=&afftrack=" target="_blank">'.$vbulletin->options['glowhostspamomatic_affiliate_text'].'</a></li>';
+					} else {
+						$template_hook['footer_links'] .= '<li><a href="http://glowhost.com" target="_blank">'.$vbulletin->options['glowhostspamomatic_affiliate_text'].'</a></li>';
+					}
+
+				}
+
+				if ($vbulletin->options['glowhostspamomatic_credits_give'] == 1)
+				if ($vbulletin->options['glowhostspamomatic_affiliate_place'] == 0) {
+					$vbphrase['powered_by_vbulletin'] .= '<br /><a href="http://glowhost.com" target="_blank">Web Hosting</a>';
+				} else {
+					$template_hook['footer_links'] .= '<li><a href="http://glowhost.com" target="_blank">Web Hosting</a></li>';
+				}
+
+			]]></phpcode>
+		</plugin>
+
+		<!-- Affiliate END -->
+
+	</plugins>
+
+	<phrases>
+		<phrasetype name="glowhostspamomatic" fieldname="vbsettings">
+			<phrase name="settinggroup_glowhostspamomatic_settings" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[GlowHost - Spam-O-Matic]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_bsc_protect_group_desc" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Enter a list of group IDs, separated by commas. Members of these groups will be protected from potential actions of this tool - i.e. this tool can not be used against these users.]]></phrase>
+			<phrase name="setting_glowhostspamomatic_bsc_protect_group_title" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Spam-O-Matic: Protect Groups]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_bsc_protect_user_desc" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Enter a list of userids, separated by commas, who will be protected against the use of this tool (see option above).]]></phrase>
+			<phrase name="setting_glowhostspamomatic_bsc_protect_user_title" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Spam-O-Matic: Protect Users]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_alwaysexcludeip_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Exclude IPs]]></phrase>
+			<phrase name="setting_glowhostspamomatic_alwaysexcludeip_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Always exclude these IP numbers from testing<br><br>In this format<br>123.123.10 (will ban 123.123.10.*) or 123.123.123.10 for a single IP number<br>Put a space required between IP numbers]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_alwaysexcludeemail_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Exclude email addresses]]></phrase>
+			<phrase name="setting_glowhostspamomatic_alwaysexcludeemail_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Always exclude these email addresses from testing<br><br>In this format<br>*@gooddomain.com<br>Put a space between each email addresses (case insensitive)]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_alwaysexcludename_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Exclude user names]]></phrase>
+			<phrase name="setting_glowhostspamomatic_alwaysexcludename_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Always exclude these user names from testing<br><br>Space required between names (case insensitive)<br>Names with a space in them must be in quotes - eg "Good User"]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_apikey_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[StopForumSpam: API Key]]></phrase>
+			<phrase name="setting_glowhostspamomatic_apikey_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Your StopForumSpam API Key:<br /><br />This key is not required, but we suggest obtaining one. If you obtain a key and save it here, any spammers that are able to sneak by the automated checks and post on your forum, can be automatically submitted to the StopForumSpam database.<br /><br />To auto-submit spammers to the StopForumSpam database, simply moderate a post and select the option from the Moderation Tools menu for the Punitive action: "Ban users" and select the option to "Delete Posts As Spam..."<br /><br />To obtain your free StopForumSpam Key, visit <a target="_blank" href=" http://www.stopforumspam.com">StopForumSpam.com</a>]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_testfield_ip_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[StopForumSpam: IP Check]]></phrase>
+			<phrase name="setting_glowhostspamomatic_testfield_ip_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Test the IP address against the StopForumSpam database]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_testfield_username_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[StopForumSpam: Username Check]]></phrase>
+			<phrase name="setting_glowhostspamomatic_testfield_username_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Test username against the StopForumSpam database]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_testfield_email_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[StopForumSpam: Email Check]]></phrase>
+			<phrase name="setting_glowhostspamomatic_testfield_email_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Test the email address against the ban list]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_result_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[StopForumSpam: Desired Action]]></phrase>
+			<phrase name="setting_glowhostspamomatic_result_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[What should happen if the new registration is listed in the StopForumSpam database]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_result_timeout_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[StopForumSpam: Query Connection Errors ]]></phrase>
+			<phrase name="setting_glowhostspamomatic_result_timeout_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[What should happen if the remote connection times out when querying the new registration?<br><br><i>* Note: Only applies if set to block listed registrations in the above setting</i>]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_remote_cache_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[StopForumSpam: Data Fetching - Cache]]></phrase>
+			<phrase name="setting_glowhostspamomatic_remote_cache_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Duration in minutes that remote queries should be cached to reduce query traffic / lookup duration and load on the remote server]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_expire_day_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[StopForumSpam: Remote Expiry]]></phrase>
+			<phrase name="setting_glowhostspamomatic_expire_day_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Remote query expiry age in days<br>www.StopForumSpam.com lists IP/usernames/email addresses that date back some time (in some cases, several months). This option will expire old records when doing queries.<br><br>Small expiry could result in persistent spammers being able to register and a high expiry age could result in innocent people being denied registration is they happen to get an IP number that a spammer used a while ago]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_do_submit_moderation_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[StopForumSpam: Auto-submit from Easy Cleanup]]></phrase>
+			<phrase name="setting_glowhostspamomatic_do_submit_moderation_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Auto-submit user details to StopForumSpam.com if Easy Cleanup used.<br /><br />* Requires StopForumSpam API Key]]></phrase>
+
+			<!-- Keyword, URL moderation -->
+			<phrase name="setting_glowhostspamomatic_automodenabled_title"><![CDATA[Auto-Moderation: Enable]]></phrase>
+			<phrase name="setting_glowhostspamomatic_automodenabled_desc"><![CDATA[Set this to "Disabled" to completely disable all Auto-Moderation settings below.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_automodkeywords_title"><![CDATA[Auto-Moderation: Bad Words]]></phrase>
+			<phrase name="setting_glowhostspamomatic_automodkeywords_desc"><![CDATA[If any of these keywords (one word per line) appears in a new thread or reply, it will automatically be placed under Moderation regardless of user postcount.<br /><br />Enter Keywords in lowercase only. To see more example bad words, <a target="_blank" href="http://glowhost.com/forums/programming-talk/glowhost-spam-o-matic-bad-words-list-2372.html">click here</a>.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_automodurls_title"><![CDATA[Auto-Moderation: URL Count]]></phrase>
+			<phrase name="setting_glowhostspamomatic_automodurls_desc"><![CDATA[The maximum number of URLs a user can post in a new thread or reply. <br /><br />If the number of URLs posted is more than the defined value here, the post will be automatically placed under Moderation. For example:<br /><br />If the setting is 0, the user can't post any URLs. If they do, they will be automatically moderated.<br />If the setting is 1, the user can post up to 1 URL before being moderated.<br />If the setting is 2, the user can post up to 2 URLs before being moderated, etc.<br />Any posts found to exceed the defined limit will be sent to moderation.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_automodpostcount_title"><![CDATA[Auto-Moderation: Minimum Post Count]]></phrase>
+			<phrase name="setting_glowhostspamomatic_automodpostcount_desc"><![CDATA[Minimum postcount required to avoid keyword and URL moderation. If user has a higher postcount than this number, their post will never be auto-moderated. To always scan all posts from all users, set this value to 0. <b>This does not effect moderators and admins</b>.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_automodpostaction_title"><![CDATA[Auto-Moderation: Post Action]]></phrase>
+			<phrase name="setting_glowhostspamomatic_automodpostaction_desc"><![CDATA[Choosing to Moderate Post will make it possible to publish the post at a later date after reviewing its contents. Preventing Post won't allow the user to make the post.]]></phrase>
+			<!-- Keyword, URL moderation END -->
+
+			<!-- AKISMET -->
+			<phrase name="setting_glowhostspamomatic_akismet_enabled_desc" date="0" username="" version=""><![CDATA[Set this to Disabled to avoid user posts being checked using Akismet service.]]></phrase>
+			<phrase name="setting_glowhostspamomatic_akismet_enabled_title" date="0" username="" version=""><![CDATA[Akismet: Enable]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_akismet_postcount_desc" date="0" username="" version=""><![CDATA[This setting controls how many of a user's posts will be scanned by the Akismet Service. Once a user's post count exceeds this threshold, their posts will not be scanned for spam content. To always scan all posts from all users, set this value to 0.]]></phrase>
+			<phrase name="setting_glowhostspamomatic_akismet_postcount_title" date="0" username="" version=""><![CDATA[Akismet: Post Count]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_akismet_key_desc" date="0" username="" version=""><![CDATA[Your Akismet API Key:<br /><br />The Akismet API Key is not required for your GlowHost Spam-O-Matic to function, but we suggest obtaining one. If you obtain a key and save it here, any spammers that are able to sneak by the automated checks and post on your forum, can be automatically submitted to the Akismet database. Additionally, posts by new users will be checked against the Akismet service. Suspeicious posts will be placed automatically in moderation.<br /><br />If you do not obtain an Akismet API key, The auto-moderation functions below will still work.<br /><br />To auto-submit spammers to the Akismet database, simply moderate a post and select the option from the Moderation Tools menu for the Punitive action: "Ban users" and select the option to "Delete Posts As Spam..."<br /><br />Akismet has free and licensed keys available depending on your situation. To obtain a key for your forum, visit <a target="_blank" href=" http://akismet.com/">Akismet.com</a> and choose the most appropriate option.]]></phrase>
+			<phrase name="setting_glowhostspamomatic_akismet_key_title" date="0" username="" version=""><![CDATA[Akismet: API Key]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_akismet_do_submit_moderation_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Akismet: Auto-submit from Easy Cleanup]]></phrase>
+			<phrase name="setting_glowhostspamomatic_akismet_do_submit_moderation_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Auto-submit user details to Akismet if "Spam-O-Matic" is chosen from the Moderation Tools menu.<br /><br /><i>* Requires Akismet API Key.</i>]]></phrase>
+			<!-- AKISMET END -->
+
+			<!-- Easy Cleanup -->
+
+			<phrase name="setting_glowhostspamomatic_bsc_enable_desc" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[You can disable all "Easy Cleanup" functions by setting this option to "Disabled." Your forums will still continue to block spammers and you can remove posts and other items using the built-in vBulletin moderation tools.]]></phrase>
+			<phrase name="setting_glowhostspamomatic_bsc_enable_title" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Easy Cleanup: Enable]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_bsc_ban_user_desc" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[If you choose to remove user, its profile, threads, posts, PMs and Calendar Events will be removed. If you choose to ban a user, you can configure the default values for your ban preferences on the Spam-O-Matic Forum Post Moderation Wizard below. These options can be overridden, or made static depending on how much control you want to give to your moderators who are in charge of spam cleanup.]]></phrase>
+			<phrase name="setting_glowhostspamomatic_bsc_ban_user_title" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Easy Cleanup: User Action]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_bsc_group_desc" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Your "Banned" usergroup ID number]]></phrase>
+			<phrase name="setting_glowhostspamomatic_bsc_group_title" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Easy Cleanup: Banned UserGroup ID]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_bsc_delete_threads_desc" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Should threads started by the user be deleted?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_bsc_delete_threads_title" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Easy Cleanup: Remove Threads]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_bsc_delete_posts_desc" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Should posts made by the user be deleted?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_bsc_delete_posts_title" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Easy Cleanup: Remove Posts]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_bsc_delete_pms_desc" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Should any PMs sent by this user be deleted?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_bsc_delete_pms_title" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Easy Cleanup: Remove PMs]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_bsc_delete_events_desc" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Should any calendar events started by this user be deleted?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_bsc_delete_events_title" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Easy Cleanup: Remove Calendar Event]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_bsc_hard_delete_desc" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Should posts or threads be permanently deleted? Setting this option to "no" will soft delete.]]></phrase>
+			<phrase name="setting_glowhostspamomatic_bsc_hard_delete_title" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Easy Cleanup: Permanent Thread/Post Delete]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_bsc_overrride_desc" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Give possibility for moderators to override these settings when removing a user.]]></phrase>
+			<phrase name="setting_glowhostspamomatic_bsc_overrride_title" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Easy Cleanup: Allow Override]]></phrase>
+
+			<!-- Easy Cleanup END -->
+
+
+			<!-- Newbies Handling -->
+
+			<phrase name="setting_glowhostspamomatic_noob_enabled_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Newbies Manager: Put New User Into Newbies Group?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_noob_enabled_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[New users will be moved to Newbies group until their post count higher than defined here. For more information about the Newbies Manager, <a target="_blank" href="http://glowhost.com/forums/programming-talk/spam-o-matic-newbies-manager-2382.html">click here</a>.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_noob_group_id_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Newbies Manager: Newbies Group ID]]></phrase>
+			<phrase name="setting_glowhostspamomatic_noob_group_id_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[The group ID that new users will be put into immediately after successfully registering.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_noob_autopromote_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Newbies Manager: Auto-promote Users From Newbies To Trusted/Registered Users?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_noob_autopromote_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[]]>Users will remain in the Newbies group forever unless you manually move them to another group. Set this to "Yes" to automatically promote them based on the settings below.</phrase>
+
+			<phrase name="setting_glowhostspamomatic_noob_reg_ugroup_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Newbies Manager: Trusted/Registered Users Group ID]]></phrase>
+			<phrase name="setting_glowhostspamomatic_noob_reg_ugroup_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[A group ID that users are moved to upon reaching defined post-count. If you have a trusted group other than "Registered Users" Enter the Group ID here. (Default: 2)]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_noob_promotepostcount_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Newbies Manager: Promotion From Post Count]]></phrase>
+			<phrase name="setting_glowhostspamomatic_noob_promotepostcount_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Users are automatically moved to Trusted/Registered Users from Newbies group when they have more posts than set here.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_noob_restrict_automod_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Auto-Moderation: Apply Auto-Moderation To Newbies only?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_noob_restrict_automod_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Setting this to Yes will restrict Auto-Moderation to Newbies group users only.]]></phrase>
+
+			<!-- Newbies Handling END -->
+
+			<!-- Stats -->
+
+			<phrase name="setting_glowhostspamomatic_stat_show_denied_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Statistics: Display Number Of Denied Registrations?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_stat_show_denied_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Show the number of spammers who were denied registration in forum statistics.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_stat_show_banned_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Statistics: Display Number Of Banned Spammers?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_stat_show_banned_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Show the number of spammers who were banned and/or submitted to StopForumSpam and/or Akismet in forum statistics.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_stat_show_s_sfs_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Statistics: Display Number Of User Details submitted to StopForumSpam?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_stat_show_s_sfs_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Show the number of spammers whos details were submitted to StopForumSpam in forum statistics.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_stat_show_s_akismet_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Statistics: Display Number Of Post Details submitted to Akismet?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_stat_show_s_akismet_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Show the number of spammy posts that where submitted to Akismet in forum statistics.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_stat_show_mod_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Statistics: Display Number Of Automoderated Posts?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_stat_show_mod_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Show the number of posts put under moderation by Auto-Moderation tools.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_stat_show_removed_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Statistics: Display Number Of Removed Posts?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_stat_show_removed_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Show the number of posts that where removed with Easy-Cleanup.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_stat_show_link_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Statistics: Link to Spam-O-Matic?]]></phrase>
+			<phrase name="setting_glowhostspamomatic_stat_show_link_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Link "By Spam-O-Matic" in forum statistics to vBulletin.org so others can protect their forums with Spam-O-Matic.]]></phrase>
+
+			<!-- Stats END -->
+
+			<!-- Affiliate -->
+
+			<phrase name="setting_glowhostspamomatic_affiliate_enable_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Affiliate System: Enable]]></phrase>
+			<phrase name="setting_glowhostspamomatic_affiliate_enable_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Link to GlowHost.com and earn $125 per signup?<br /><a href="http://www.shareasale.com/shareasale.cfm?merchantID=17701" target="_blank">Click Here For Program Details</a><br /><br />Enabling this will add a link to in the footer of your forum.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_affiliate_id_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Affiliate System: Affiliate ID]]></phrase>
+			<phrase name="setting_glowhostspamomatic_affiliate_id_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Enter your ShareASale affiliate Id to earn credit for your referrals.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_affiliate_place_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Affiliate System: Link position]]></phrase>
+			<phrase name="setting_glowhostspamomatic_affiliate_place_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[If you have vBulletin copyright removed on your forums, select "Footer Links" to place affiliate link on the bottom of your forum pages.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_affiliate_text_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Affiliate System: Link text]]></phrase>
+			<phrase name="setting_glowhostspamomatic_affiliate_text_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Affiliate link text.]]></phrase>
+
+			<!-- Affiliate END -->
+
+			<!-- Credits -->
+
+			<phrase name="setting_glowhostspamomatic_credits_give_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Credits: Give Thanks]]></phrase>
+			<phrase name="setting_glowhostspamomatic_credits_give_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[If you are unable to donate for this mod, you can show your thanks in other ways. We would very much appreciate setting this to "Yes" to help support development of this mod.<br /><br />Setting this to Yes will add a small link to our site on your forum based on where you choose to display it below.]]></phrase>
+
+			<phrase name="setting_glowhostspamomatic_credits_location_title" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Credits: Thanks Location]]></phrase>
+			<phrase name="setting_glowhostspamomatic_credits_location_desc" date="1280241504" username="glowhostspamomatic" version="1.0.0"><![CDATA[Where do you want to display your link to GlowHost if "Give Thanks" setting above is enabled?]]></phrase>
+
+			<!-- Credits END -->
+
+		</phrasetype>
+
+		<phrasetype name="Permissions" fieldname="cppermission">
+			<phrase name="glowhostspamomatic_permissions"><![CDATA[GlowHost - Spam-O-Matic Permissions - Viewable / Submit]]></phrase>
+			<phrase name="glowhostspamomatic_view"><![CDATA[Viewable - Should this usergroup be able to view the StopForumSpam links in User Options / Whos Online]]></phrase>
+			<phrase name="glowhostspamomatic_submit"><![CDATA[Submit - Should this usergroup be able to submit user details to www.StopForumSpam.com]]></phrase>
+		</phrasetype>
+
+		<phrasetype name="Style Tools" fieldname="style">
+			<phrase name="group_glowhostspamomatic" date="0" username="" version=""><![CDATA[GlowHost - Spam-O-Matic]]></phrase>
+		</phrasetype>
+
+		<phrasetype name="Control Panel Global" fieldname="cpglobal">
+			<phrase name="glowhostspamomatic_log" date="0" username="" version=""><![CDATA[GlowHost - Spam-O-Matic Logs]]></phrase>
+			<phrase name="glowhostspamomatic_batch" date="0" username="" version=""><![CDATA[GlowHost - Spam-O-Matic Batch Check]]></phrase>
+		</phrasetype>
+
+		<phrasetype name="Error Messages" fieldname="error">
+			<phrase name="pruned_glowhostspamomatic_log_successfully" date="0" username="" version=""><![CDATA[Pruned GlowHost - Spam-O-Matic Logs Successfully]]></phrase>
+		</phrasetype>
+
+		<phrasetype name="GLOBAL" fieldname="global">
+			<phrase name="glowhostspamomatic_title" date="0" username="" version=""><![CDATA[GlowHost - Spam-O-Matic Title]]></phrase>
+		  	<phrase name="glowhostspamomatic_log" date="0" username="" version=""><![CDATA[GlowHost - Spam-O-Matic Log]]></phrase>
+			<phrase name="admin_login" date="0" username="" version=""><![CDATA[Admin CP]]></phrase>
+			<phrase name="ipaddress" date="0" username="" version=""><![CDATA[IP Address]]></phrase>
+
+			<!-- AKISMET -->
+			<phrase name="akvbghsfs_akismet_group_permissions" date="0" username="" version=""><![CDATA[Filter Posts With Akismet]]></phrase>
+			<phrase name="akvbghsfs_akismet_permissions" date="0" username="" version=""><![CDATA[Akismet Permissions]]></phrase>
+			<!-- AKISMET END -->
+
+			<!-- Easy Cleanup -->
+
+			<phrase name="glowhostspamomatic_bsc_ban" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[banned]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_ban_or_delete" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[<br /><br />This user will also be {1}.]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_ban_reason" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Posting unwanted spam]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_ban_text" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Banned]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_confirm_button" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Confirm]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_confirm_end" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[<br /><br />Please confirm your intentions - <b>This action cannot be undone</b><br /><br />]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_confirm_start" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[You are about to perform the following actions concerning the user <b>{1}</b> (id: {2})<br />]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_delete" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[deleted]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_delete_reason" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Spam and/or unwanted content]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_delete_reason_input" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Deletion reason: ]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_disabled" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[This tool has been disabled by an administrator]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_events" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[<br />{1} calendar events created by this user will be deleted.]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_events_deleted" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[{1} events deleted<br />]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_harddelete" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[permanently]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_ip_ban" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[<br />IP address will be added to banned IP address list]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_ip_banned" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[IP address {1} added to banned IP address list<br />]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_no_action" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[No actions were performed. There was probably nothing to delete. In the case of banning or deleting a user the action may have already been performed.]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_pms" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[<br />{1} private messages sent by this user will be deleted.]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_pms_deleted" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[{1} private messages deleted<br />]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_posts" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[<br />{1} posts made by this user will be {2} deleted.]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_posts_deleted" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[{1} posts deleted<br />]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_protected" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[This user is protected. You may not use this tool on this user.]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_protected_tooold" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[This user registered more than {1} days ago, they are therefore protected from this tool.]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_reason_input" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Ban reason: ]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_threads" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[<br />{1} threads started by this user will be {2} deleted.]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_threads_deleted" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[{1} threads deleted<br />]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_title" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Spam-O-Matic]]></phrase>
+			<phrase name="glowhostspamomatic_bsc_user_status" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[<br />User was {1}]]></phrase>
+			<phrase name="spammer_ban_member" date="1280241504" username="glowhostspamomatic" version="1.0"><![CDATA[Easy Cleanup]]></phrase>
+
+			<!-- Easy Cleanup END -->
+		</phrasetype>
+
+		<phrasetype name="Logging Tools" fieldname="logging">
+			<phrase name="are_you_sure_you_want_to_prune_x_log_entries_from_glowhostspamomatic_log" date="0" username="" version=""><![CDATA[Are you sure you want to prune {1} log entries from the GlowHost - Spam-O-Matic log?]]></phrase>
+			<phrase name="glowhostspamomatic_log_viewer_page_x_y_there_are_z_total_log_entries" date="0" username="" version=""><![CDATA[GlowHost - Spam-O-Matic Log Viewer (page {1}/{2}) | There are {3} total log entries.]]></phrase>
+			<phrase name="glowhostspamomatic_log_viewer" date="0" username="" version=""><![CDATA[GlowHost - Spam-O-Matic Log Viewer]]></phrase>
+			<phrase name="glowhostspamomatic_show_only" date="0" username="" version=""><![CDATA[Show Only Entries Generated By UserID: (leave blank to show all)]]></phrase>
+			<phrase name="prune_glowhostspamomatic_logs" date="0" username="" version=""><![CDATA[Prune GlowHost - Spam-O-Matic Logs]]></phrase>
+		</phrasetype>
+
+		<phrasetype name="error" fieldname="error">
+			<phrase name="glowhostspamomatic_reject" date="0" username="" version=""><![CDATA[Registration denied, this forum runs an active policy of not allowing spammers. Please contact us via the "Contact Us" page link if you believe this is in error]]></phrase>
+			<phrase name="vbstopformspam_reject_connectionerror" date="0" username="" version=""><![CDATA[Registration denied. We check new registrations against a database of known forum spammers. At this time, we are unable to contact this database to verify your registration. We are sorry for the inconvenience but please do try again later.]]></phrase>
+			<phrase name="glowhostspamomatic_reject_post" date="0" username="" version=""><![CDATA[Post denied. New posts are limited by number of URLs it may contain and checked if it doesn't contain forbidden words.]]></phrase>
+		</phrasetype>
+	</phrases>
+
+	<options>
+	  <settinggroup name="glowhostspamomatic_settings" displayorder="65535">
+
+	  		<setting varname="glowhostspamomatic_bsc_protect_group" displayorder="4">
+				<datatype>free</datatype>
+				<defaultvalue>5,6,7</defaultvalue>
+			</setting>
+			<setting varname="glowhostspamomatic_bsc_protect_user" displayorder="8">
+				<datatype>free</datatype>
+			</setting>
+
+	  		<setting varname="glowhostspamomatic_akismet_enabled" displayorder="10">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+0|Disabled
+1|Enabled</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+	  		<setting varname="glowhostspamomatic_akismet_postcount" displayorder="20">
+				<datatype>number</datatype>
+				<defaultvalue>10</defaultvalue>
+			</setting>
+
+	  		<setting varname="glowhostspamomatic_akismet_key" displayorder="30">
+				<datatype>free</datatype>
+			</setting>
+
+			<setting varname="glowhostspamomatic_akismet_do_submit_moderation" displayorder="40">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<!-- Akismet END -->
+
+			<!-- SFS -->
+
+			<setting varname="glowhostspamomatic_testfield_ip" displayorder="50">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+0|Disabled
+1|Enabled</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_testfield_username" displayorder="60">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+0|Disabled
+1|Enabled</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_testfield_email" displayorder="70">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+0|Disabled
+1|Enabled</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_result" displayorder="80">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+0|Log and continue with registration
+1|Log and block registration</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_result_timeout" displayorder="90">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+0|Allow Registration
+1|Block Registration</optioncode>
+				<defaultvalue>0</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_expire_day" displayorder="100">
+				<datatype>free</datatype>
+				<defaultvalue>90</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_remote_cache" displayorder="110">
+				<datatype>free</datatype>
+				<defaultvalue>30</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_apikey" displayorder="120">
+				<datatype>free</datatype>
+				<defaultvalue></defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_do_submit_moderation" displayorder="130">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<!-- SFS END -->
+
+			<!-- Newbies Handling -->
+
+			<setting varname="glowhostspamomatic_noob_enabled" displayorder="140">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>0</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_noob_group_id" displayorder="150">
+				<datatype>free</datatype>
+				<defaultvalue></defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_noob_autopromote" displayorder="160">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_noob_reg_ugroup" displayorder="170">
+				<datatype>free</datatype>
+				<defaultvalue>2</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_noob_promotepostcount" displayorder="180">
+				<datatype>free</datatype>
+				<defaultvalue>10</defaultvalue>
+			</setting>
+
+			<!-- Newbies Handling END -->
+
+			<!-- Automod -->
+
+			<setting varname="glowhostspamomatic_automodenabled" displayorder="190">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+0|Disabled
+1|Enabled</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_automodpostaction" displayorder="200">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+0|Moderate Post
+1|Prevent Post</optioncode>
+				<defaultvalue>0</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_noob_restrict_automod" displayorder="210">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>0</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_automodpostcount" displayorder="220">
+				<datatype>number</datatype>
+				<defaultvalue>6</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_automodkeywords" displayorder="230">
+				<datatype>free</datatype>
+				<optioncode>textarea</optioncode>
+				<defaultvalue><![CDATA[drugs
+meds
+viagra
+porn]]></defaultvalue>
+			</setting>
+			<setting varname="glowhostspamomatic_automodurls" displayorder="240">
+				<datatype>number</datatype>
+				<defaultvalue>0</defaultvalue>
+			</setting>
+
+			<!-- Automod END -->
+
+			<!-- Easy Cleanup -->
+
+			<setting varname="glowhostspamomatic_bsc_enable" displayorder="250">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+0|Disabled
+1|Enabled</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_bsc_ban_user" displayorder="260">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Ban User
+0|Remove User</optioncode>
+				<defaultvalue>0</defaultvalue>
+			</setting>
+			<setting varname="glowhostspamomatic_bsc_group" displayorder="270">
+				<datatype>number</datatype>
+				<defaultvalue>8</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_bsc_delete_threads" displayorder="280">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+			<setting varname="glowhostspamomatic_bsc_delete_posts" displayorder="290">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+			<setting varname="glowhostspamomatic_bsc_delete_pms" displayorder="300">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+			<setting varname="glowhostspamomatic_bsc_delete_events" displayorder="310">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_bsc_hard_delete" displayorder="320">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_bsc_overrride" displayorder="350">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<!-- Easy Cleanup END -->
+
+			<!-- Stats -->
+
+			<setting varname="glowhostspamomatic_stat_show_denied" displayorder="360">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_stat_show_banned" displayorder="370">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_stat_show_s_sfs" displayorder="373">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_stat_show_s_akismet" displayorder="376">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_stat_show_mod" displayorder="380">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_stat_show_removed" displayorder="385">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_stat_show_link" displayorder="390">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Yes
+0|No</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<!-- Stats END -->
+
+			<!-- Affiliate -->
+
+			<setting varname="glowhostspamomatic_affiliate_enable" displayorder="400">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+0|Disabled
+1|Enabled</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_affiliate_id" displayorder="410">
+				<datatype>free</datatype>
+				<defaultvalue></defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_affiliate_place" displayorder="420">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Footer Links
+0|Copyright Section</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_affiliate_text" displayorder="425">
+				<datatype>free</datatype>
+				<defaultvalue>Web Hosting</defaultvalue>
+			</setting>
+
+			<!-- Affiliate END -->
+
+			<!-- Credits -->
+
+			<setting varname="glowhostspamomatic_credits_give" displayorder="430">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+0|No
+1|Yes</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<setting varname="glowhostspamomatic_credits_location" displayorder="440">
+				<datatype>free</datatype>
+				<optioncode>select:piped
+1|Footer Links
+0|Copyright Section</optioncode>
+				<defaultvalue>1</defaultvalue>
+			</setting>
+
+			<!-- Credits END -->
+
+		</settinggroup>
+	</options>
+
+	<helptopics />
+	<faqentries />
+</product>

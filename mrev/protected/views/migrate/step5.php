@@ -1,0 +1,1 @@
+<a href="<?php echo Yii::app()->createUrl("migrate/step" . ($step->sorder+3)); ?>" class="btn btn-primary"><span class="glyphicon glyphicon-forward"></span> <?php echo Yii::t('frontend', 'Next Step'); ?></a>

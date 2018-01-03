@@ -1,0 +1,352 @@
+2017/10/18 04:09:49 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'wvodesig_mage1_dev_ver17.core_website' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `core_website`.
+2017/10/18 04:09:49 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{core_website}}" for active record class "Mage1Website" cannot be found in the database.' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php:2385
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Mage1Website))
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(661): CActiveRecord->getMetaData()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(1355): CActiveRecord->getTableSchema()
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(237): CActiveRecord->findAll('code <> 'admin'')
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep2()
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step2')
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step2')
+#11 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/mrev/index.php/migrate/step2
+HTTP_REFERER=http://demo.wvodesigns.com/mrev/index.php/migrate/step1
+---
+2017/10/18 04:14:43 [error] [php] Undefined variable: websites (/chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php:369)
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): MigrateController->runAction()
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): MigrateController->runActionWithFilters()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): MigrateController->run()
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CWebApplication->run()
+REQUEST_URI=/mrev/index.php/migrate/step2
+2017/10/18 04:15:45 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'wvodesig_mage1_dev_ver17.core_website' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `core_website`.
+2017/10/18 04:15:45 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{core_website}}" for active record class "Mage1Website" cannot be found in the database.' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php:2385
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Mage1Website))
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(661): CActiveRecord->getMetaData()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(1355): CActiveRecord->getTableSchema()
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(237): CActiveRecord->findAll('code <> 'admin'')
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep2()
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step2')
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step2')
+#11 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/mrev/index.php/migrate/step2
+HTTP_REFERER=http://demo.wvodesigns.com/mrev/index.php/migrate/step1
+---
+2017/10/18 04:16:35 [error] [php] Invalid argument supplied for foreach() (/chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/views/migrate/step2.php:16)
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(869): MigrateController->renderFile()
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(782): MigrateController->renderPartial()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(372): MigrateController->render()
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep2()
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams()
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): MigrateController->runAction()
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): MigrateController->runActionWithFilters()
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): MigrateController->run()
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CWebApplication->run()
+REQUEST_URI=/mrev/index.php/migrate/step2
+2017/10/18 04:17:22 [error] [php] Invalid argument supplied for foreach() (/chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/views/migrate/step2.php:16)
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(869): MigrateController->renderFile()
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(782): MigrateController->renderPartial()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(372): MigrateController->render()
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep2()
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams()
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): MigrateController->runAction()
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): MigrateController->runActionWithFilters()
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): MigrateController->run()
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CWebApplication->run()
+REQUEST_URI=/mrev/index.php/migrate/step2
+2017/10/18 04:21:04 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'wvodesig_mage1_dev_ver17.eav_entity_type' doesn't exist. The SQL statement executed was: SELECT entity_type_id FROM eav_entity_type WHERE entity_type_code = 'catalog_product'.
+2017/10/18 04:21:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'wvodesig_mage1_dev_ver17.eav_entity_type' doesn't exist. The SQL statement executed was: SELECT entity_type_id FROM eav_entity_type WHERE entity_type_code = 'catalog_product'' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php:543
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/models/MigrateSteps.php(310): CDbCommand->queryScalar()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(394): MigrateSteps::getMage1EntityTypeId('catalog_product')
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep3()
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step3')
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step3')
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/mrev/index.php/migrate/step3
+HTTP_REFERER=http://demo.wvodesigns.com/mrev/index.php/migrate/step2
+---
+2017/10/18 04:25:34 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1. The SQL statement executed was: SELECT COUNT(DISTINCT  e.entity_id) AS total FROM mage_catalog_product_entity e LEFT JOIN mage_catalog_product_entity_int ei ON e.entity_id = ei.entity_id WHERE e.type_id = 'simple' AND ei.store_id IN ().
+2017/10/18 04:25:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1. The SQL statement executed was: SELECT COUNT(DISTINCT  e.entity_id) AS total FROM mage_catalog_product_entity e LEFT JOIN mage_catalog_product_entity_int ei ON e.entity_id = ei.entity_id WHERE e.type_id = 'simple' AND ei.store_id IN ()' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php:543
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/models/MigrateSteps.php(394): CDbCommand->queryScalar()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/views/migrate/step5.php(45): MigrateSteps::getTotalProductsByType('simple')
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CBaseController.php(126): require('/chroot/home/wv...')
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CBaseController.php(95): CBaseController->renderInternal('/chroot/home/wv...', Array, true)
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(869): CBaseController->renderFile('/chroot/home/wv...', Array, true)
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(782): CController->renderPartial('step5', Array, true)
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(1775): CController->render('step5', Array)
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep5()
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step5')
+#13 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step5')
+#14 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/mrev/index.php/migrate/step5
+HTTP_REFERER=http://demo.wvodesigns.com/mrev/index.php/migrate/step4
+---
+2017/10/18 04:30:22 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1. The SQL statement executed was: SELECT COUNT(DISTINCT  e.entity_id) AS total FROM mage_catalog_product_entity e LEFT JOIN mage_catalog_product_entity_int ei ON e.entity_id = ei.entity_id WHERE e.type_id = 'simple' AND ei.store_id IN ().
+2017/10/18 04:30:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1. The SQL statement executed was: SELECT COUNT(DISTINCT  e.entity_id) AS total FROM mage_catalog_product_entity e LEFT JOIN mage_catalog_product_entity_int ei ON e.entity_id = ei.entity_id WHERE e.type_id = 'simple' AND ei.store_id IN ()' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php:543
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/models/MigrateSteps.php(394): CDbCommand->queryScalar()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/views/migrate/step5.php(45): MigrateSteps::getTotalProductsByType('simple')
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CBaseController.php(126): require('/chroot/home/wv...')
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CBaseController.php(95): CBaseController->renderInternal('/chroot/home/wv...', Array, true)
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(869): CBaseController->renderFile('/chroot/home/wv...', Array, true)
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(782): CController->renderPartial('step5', Array, true)
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(1761): CController->render('step5', Array)
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep5()
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step5')
+#13 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step5')
+#14 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/mrev/index.php/migrate/step5
+HTTP_REFERER=http://demo.wvodesigns.com/mrev/index.php/migrate/step4
+---
+2017/10/18 04:31:31 [error] [php] Undefined variable: product_type_ids (/chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php:1760)
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): MigrateController->runAction()
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): MigrateController->runActionWithFilters()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): MigrateController->run()
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CWebApplication->run()
+REQUEST_URI=/mrev/index.php/migrate/step5
+2017/10/18 04:32:17 [error] [php] Undefined variable: product_type_ids (/chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php:1760)
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): MigrateController->runAction()
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): MigrateController->runActionWithFilters()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): MigrateController->run()
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CWebApplication->run()
+REQUEST_URI=/mrev/index.php/migrate/step5
+2017/10/18 04:32:22 [error] [php] Undefined variable: product_type_ids (/chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php:1760)
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): MigrateController->runAction()
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): MigrateController->runActionWithFilters()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): MigrateController->run()
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CWebApplication->run()
+REQUEST_URI=/mrev/index.php/migrate/step5
+2017/10/18 04:32:45 [error] [php] Undefined variable: product_type_ids (/chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php:1760)
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): MigrateController->runAction()
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): MigrateController->runActionWithFilters()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): MigrateController->run()
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CWebApplication->run()
+REQUEST_URI=/mrev/index.php/migrate/step5
+2017/10/18 04:33:41 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND e.store_id IN ()' at line 1. The SQL statement executed was: SELECT COUNT(DISTINCT  e.entity_id) AS total FROM mage_customer_entity e WHERE e.group_id = 1 AND e.website_id IN () AND e.store_id IN ().
+2017/10/18 04:33:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND e.store_id IN ()' at line 1. The SQL statement executed was: SELECT COUNT(DISTINCT  e.entity_id) AS total FROM mage_customer_entity e WHERE e.group_id = 1 AND e.website_id IN () AND e.store_id IN ()' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php:543
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/models/MigrateSteps.php(412): CDbCommand->queryScalar()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/views/migrate/step6.php(34): MigrateSteps::getTotalCustomersByGroup('1')
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CBaseController.php(126): require('/chroot/home/wv...')
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CBaseController.php(95): CBaseController->renderInternal('/chroot/home/wv...', Array, true)
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(869): CBaseController->renderFile('/chroot/home/wv...', Array, true)
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(782): CController->renderPartial('step6', Array, true)
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(2257): CController->render('step6', Array)
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep6()
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step6')
+#13 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step6')
+#14 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/mrev/index.php/migrate/step6
+HTTP_REFERER=http://demo.wvodesigns.com/mrev/index.php/migrate/step5
+---
+2017/10/18 04:34:25 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND e.store_id IN ()' at line 1. The SQL statement executed was: SELECT COUNT(DISTINCT  e.entity_id) AS total FROM mage_customer_entity e WHERE e.group_id = 1 AND e.website_id IN () AND e.store_id IN ().
+2017/10/18 04:34:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND e.store_id IN ()' at line 1. The SQL statement executed was: SELECT COUNT(DISTINCT  e.entity_id) AS total FROM mage_customer_entity e WHERE e.group_id = 1 AND e.website_id IN () AND e.store_id IN ()' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php:543
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/models/MigrateSteps.php(412): CDbCommand->queryScalar()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/views/migrate/step6.php(34): MigrateSteps::getTotalCustomersByGroup('1')
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CBaseController.php(126): require('/chroot/home/wv...')
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CBaseController.php(95): CBaseController->renderInternal('/chroot/home/wv...', Array, true)
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(869): CBaseController->renderFile('/chroot/home/wv...', Array, true)
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(782): CController->renderPartial('step6', Array, true)
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(2257): CController->render('step6', Array)
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep6()
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step6')
+#13 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step6')
+#14 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/mrev/index.php/migrate/step6
+HTTP_REFERER=http://demo.wvodesigns.com/mrev/index.php/migrate/step5
+---
+2017/10/18 04:35:08 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') OR store_id IS NULL' at line 1. The SQL statement executed was: SELECT * FROM `mage_review_entity_summary` `t` WHERE store_id IN () OR store_id IS NULL.
+2017/10/18 04:35:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') OR store_id IS NULL' at line 1. The SQL statement executed was: SELECT * FROM `mage_review_entity_summary` `t` WHERE store_id IN () OR store_id IS NULL' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php:543
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(3359): CActiveRecord->findAll('store_id IN () ...')
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep8()
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step8')
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step8')
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/mrev/index.php/migrate/step8
+HTTP_REFERER=http://demo.wvodesigns.com/mrev/index.php/migrate/step8
+---
+2017/10/18 04:38:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "step 2".' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php:483
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(270): CController->missingAction('step 2')
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step 2')
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step 2')
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mrev/index.php/migrate/step%202
+---
+2017/10/18 04:39:02 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND e.store_id IN ()' at line 1. The SQL statement executed was: SELECT COUNT(DISTINCT  e.entity_id) AS total FROM mage_customer_entity e WHERE e.group_id = 1 AND e.website_id IN () AND e.store_id IN ().
+2017/10/18 04:39:02 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND e.store_id IN ()' at line 1. The SQL statement executed was: SELECT COUNT(DISTINCT  e.entity_id) AS total FROM mage_customer_entity e WHERE e.group_id = 1 AND e.website_id IN () AND e.store_id IN ()' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php:543
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/models/MigrateSteps.php(412): CDbCommand->queryScalar()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/views/migrate/step6.php(34): MigrateSteps::getTotalCustomersByGroup('1')
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CBaseController.php(126): require('/chroot/home/wv...')
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CBaseController.php(95): CBaseController->renderInternal('/chroot/home/wv...', Array, true)
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(869): CBaseController->renderFile('/chroot/home/wv...', Array, true)
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(782): CController->renderPartial('step6', Array, true)
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(2257): CController->render('step6', Array)
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep6()
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step6')
+#13 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step6')
+#14 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/mrev/index.php/migrate/step6
+---
+2017/10/18 04:39:07 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') OR e.store_id IS NULL)' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `mage_sales_flat_order` e WHERE (e.store_id IN () OR e.store_id IS NULL).
+2017/10/18 04:39:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') OR e.store_id IS NULL)' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `mage_sales_flat_order` e WHERE (e.store_id IN () OR e.store_id IS NULL)' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php:543
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/models/MigrateSteps.php(441): CDbCommand->queryScalar()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/views/migrate/step7.php(36): MigrateSteps::getTotalSalesChildObject('order')
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CBaseController.php(126): require('/chroot/home/wv...')
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CBaseController.php(95): CBaseController->renderInternal('/chroot/home/wv...', Array, true)
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(869): CBaseController->renderFile('/chroot/home/wv...', Array, true)
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(782): CController->renderPartial('step7', Array, true)
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(3310): CController->render('step7', Array)
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep7()
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step7')
+#13 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step7')
+#14 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/mrev/index.php/migrate/step7
+---
+2017/10/18 04:39:21 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') OR store_id IS NULL' at line 1. The SQL statement executed was: SELECT * FROM `mage_review_entity_summary` `t` WHERE store_id IN () OR store_id IS NULL.
+2017/10/18 04:39:21 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') OR store_id IS NULL' at line 1. The SQL statement executed was: SELECT * FROM `mage_review_entity_summary` `t` WHERE store_id IN () OR store_id IS NULL' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php:543
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(3359): CActiveRecord->findAll('store_id IN () ...')
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep8()
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step8')
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step8')
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/mrev/index.php/migrate/step8
+HTTP_REFERER=http://demo.wvodesigns.com/mrev/index.php/migrate/step8
+---
+2017/10/18 04:42:39 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1. The SQL statement executed was: SELECT * FROM `mage_tax_calculation_rate_title` `t` WHERE store_id IN ().
+2017/10/18 04:42:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1. The SQL statement executed was: SELECT * FROM `mage_tax_calculation_rate_title` `t` WHERE store_id IN ()' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php:543
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(3594): CActiveRecord->findAll('store_id IN ()')
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep9()
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step9')
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step9')
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/mrev/index.php/migrate/step9
+HTTP_REFERER=http://demo.wvodesigns.com/mrev/index.php/migrate/step9
+---
+2017/10/18 04:43:38 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '3' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `tax_order_aggregated_created` (`orders_count`, `id`, `period`, `store_id`, `code`, `order_status`, `percent`, `tax_base_amount_sum`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+2017/10/18 04:43:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '3' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `tax_order_aggregated_created` (`orders_count`, `id`, `period`, `store_id`, `code`, `order_status`, `percent`, `tax_base_amount_sum`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/CDbCommand.php:358
+Stack trace:
+#0 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/protected/controllers/MigrateController.php(3654): CActiveRecord->save()
+#3 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/actions/CInlineAction.php(49): MigrateController->actionStep9()
+#4 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(282): CController->run('step9')
+#8 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/web/CWebApplication.php(141): CWebApplication->runController('migrate/step9')
+#9 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/yii/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /chroot/home/wvodesig/demo.wvodesigns.com/html/mrev/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/mrev/index.php/migrate/step9
+HTTP_REFERER=http://demo.wvodesigns.com/mrev/index.php/migrate/step9
+---

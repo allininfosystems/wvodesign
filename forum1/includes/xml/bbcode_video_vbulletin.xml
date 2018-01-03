@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<video_bbcode>
+	<provider tagoption="hulu">
+		<title>Hulu</title>
+		<url>http://www.hulu.com</url>
+		<regex_url><![CDATA[https?:\/\/www\.hulu\.com\/watch\/]]></regex_url>
+		<regex_scrape><![CDATA[<link rel="video_src" href="https?://www.hulu.com/embed/([^"]+)"]]></regex_scrape>
+		<embed><![CDATA[<object class="restrain" type="application/x-shockwave-flash" width="512" height="296" data="//www.hulu.com/embed/{vb:raw code}">
+	<param name="movie" value="//www.hulu.com/embed/{vb:raw code}" />
+	<param name="wmode" value="{vb:raw wmode}" />
+	<!--[if IE 6]>
+	<embed width="512" height="296" type="application/x-shockwave-flash" src="//www.hulu.com/embed/{vb:raw code}" />
+	<![endif]--></object>]]></embed>
+	</provider>
+	<provider tagoption="youtube">
+		<title>YouTube (Long)</title>
+		<url>http://www.youtube.com</url>
+		<regex_url><![CDATA[https?:\/\/www\.youtube\.com\/watch\?.*v=([a-z0-9-_]+)]]></regex_url>
+		<regex_scrape></regex_scrape>
+		<embed><![CDATA[<iframe class="restrain" title="YouTube video player" width="640" height="390" src="//www.youtube.com/embed/{vb:raw code}?wmode={vb:raw wmode}" allowfullscreen="true" frameborder="0"></iframe>]]></embed>
+	</provider>
+	<provider tagoption="youtube_share">
+		<title>YouTube (Short)</title>
+		<url>http://youtu.be</url>
+		<regex_url><![CDATA[https?:\/\/youtu\.be\/([a-z0-9\-_]+)]]></regex_url>
+		<regex_scrape></regex_scrape>
+		<embed><![CDATA[<iframe class="restrain" title="YouTube video player" width="640" height="390" src="//www.youtube.com/embed/{vb:raw code}?wmode={vb:raw wmode}" allowfullscreen="true" frameborder="0"></iframe>]]></embed>
+	</provider>
+	<provider tagoption="vimeo">
+		<title>Vimeo</title>
+		<url>http://www.vimeo.com</url>
+		<regex_url><![CDATA[https?:\/\/(?:www\.)?vimeo\.com\/([0-9]+)]]></regex_url>
+		<regex_scrape></regex_scrape>
+		<embed><![CDATA[<object class="restrain" type="application/x-shockwave-flash" width="640" height="360" data="//vimeo.com/moogaloop.swf?clip_id={vb:raw code}">
+	<param name="movie" value="//vimeo.com/moogaloop.swf?clip_id={vb:raw code}" />
+	<param name="wmode" value="{vb:raw wmode}" />
+	<!--[if IE 6]>
+	<embed width="640" height="360" type="application/x-shockwave-flash" src="//vimeo.com/moogaloop.swf?clip_id={vb:raw code}" />
+	<![endif]--></object>]]></embed>
+	</provider>
+	<provider tagoption="dailymotion">
+		<title>Dailymotion</title>
+		<url>http://www.dailymotion.com</url>
+		<regex_url><![CDATA[https?:\/\/www\.dailymotion\.com(?:\/[^\/]+)?\/video\/([a-z0-9]+)]]></regex_url>
+		<regex_scrape></regex_scrape>
+		<embed><![CDATA[<object class="restrain" type="application/x-shockwave-flash" width="420" height="339" data="//www.dailymotion.com/swf/{vb:raw code}">
+	<param name="movie" value="//www.dailymotion.com/swf/{vb:raw code}" />
+	<param name="wmode" value="{vb:raw wmode}" />
+	<!--[if IE 6]>
+	<embed width="420" height="339" type="application/x-shockwave-flash" src="//www.dailymotion.com/swf/{vb:raw code}" />
+	<![endif]--></object>]]></embed>
+	</provider>
+	<provider tagoption="metacafe">
+		<title>Metacafe</title>
+		<url>http://www.metacafe.com</url>
+		<regex_url><![CDATA[https?:\/\/www\.metacafe\.com\/watch\/([0-9a-z_\-\/]+)]]></regex_url>
+		<regex_scrape></regex_scrape>
+		<embed><![CDATA[<object class="restrain" type="application/x-shockwave-flash" width="400" height="345" data="//www.metacafe.com/fplayer/{vb:raw code}.swf">
+	<param name="movie" value="//www.metacafe.com/fplayer/{vb:raw code}.swf" />
+	<param name="wmode" value="{vb:raw wmode}" />
+	<!--[if IE 6]>
+	<embed width="400" height="345" type="application/x-shockwave-flash" src="//www.metacafe.com/fplayer/{vb:raw code}.swf" />
+	<![endif]--></object>]]></embed>
+	</provider>
+	<provider tagoption="google">
+		<title>Google</title>
+		<url>http://video.google.com</url>
+		<regex_url><![CDATA[https?:\/\/video\.google\.com\/videoplay\?docid=([0-9\-]+)]]></regex_url>
+		<regex_scrape></regex_scrape>
+		<embed><![CDATA[<object class="restrain" type="application/x-shockwave-flash" width="400" height="326" data="//video.google.com/googleplayer.swf?docid={vb:raw code}">
+	<param name="movie" value="//video.google.com/googleplayer.swf?docid={vb:raw code}" />
+	<param name="wmode" value="{vb:raw wmode}" />
+	<!--[if IE 6]>
+	<embed width="400" height="326" type="application/x-shockwave-flash" src="//video.google.com/googleplayer.swf?docid={vb:raw code}" />
+	<![endif]--></object>]]></embed>
+	</provider>
+	<provider tagoption="facebook">
+		<title>facebook</title>
+		<url>http://www.facebook.com</url>
+		<regex_url><![CDATA[https?:\/\/(?:www\.)?facebook\.com\/(?:photo|video).php\?v=([0-9]+)]]></regex_url>
+		<regex_scrape></regex_scrape>
+		<embed><![CDATA[<iframe src="https://www.facebook.com/video/embed?video_id={vb:raw code}" width="500" height="281" frameborder="0" allowfullscreen="true"></iframe>]]></embed>
+	</provider>
+	<provider tagoption="facebook_share">
+		<title>Facebook Shares</title>
+		<url>http://www.facebook.com</url>
+		<regex_url><![CDATA[https?:\/\/www\.facebook\.com\/[a-z0-9\-_\.]+\/videos\/([0-9]+)\/?]]></regex_url>
+		<regex_scrape></regex_scrape>
+		<embed><![CDATA[<iframe src="https://www.facebook.com/video/embed?video_id={vb:raw code}" width="500" height="281" frameborder="0" allowfullscreen="true"></iframe>]]></embed>
+	</provider>
+</video_bbcode>
