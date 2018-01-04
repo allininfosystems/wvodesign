@@ -158,3 +158,21 @@
 ?>
 </div>
 <a href="javascript:void(0)" id="totop"><em class="porto-icon-up-open"></em></a>
+
+<script type="text/javascript">
+require(["jquery"],function($){
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 1000) {
+        document.getElementById("totop").style.display = "block";
+    } else {
+        document.getElementById("totop").style.display = "none";
+    }
+}
+$('#totop').click(function() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+}); 
+});
+</script>
+
